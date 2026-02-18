@@ -4,7 +4,7 @@ import Routing from "./shared/Routing";
 const App = () => {
   return (
     <BrowserRouter>
-      <Routing />
+        <Routing />
     </BrowserRouter>
   );
 };
