@@ -1,16 +1,39 @@
-import Login from "@/App/Auth/Login"
-import Signup from "@/App/Auth/Signup"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+
+import ForgotPassword from "@/App/Auth/ForgotPassword";
+import Login from "@/App/Auth/Login";
+import Signup from "@/App/Auth/Signup";
+
+import CreateWorkSpace from "@/App/[Semicoln-App]/CreateWorkSpace";
+import AuthProviders from "@/Features/auth/AuthProviders";
+import Semicoln from "@/App/[Semicoln-App]/Semicoln";
+import AppLayout from "@/Features/SemiColnApp/components/layout/Applayout";
+import Tasks from "@/App/[Semicoln-App]/Tasks";
+import Settings from "@/App/[Semicoln-App]/Settings";
+import NotFound from "@/App/[Semicoln-App]/Not-found";
+
 const Routing = () => {
   return (
-    <div>
-        <Routes>
-            <Route path="/" element={<h1 className="text-3xl font-bold underline">Home</h1>} />
-            <Route path="/Auth/Signup" element={<Signup />} />
-            <Route path="/Auth/Login" element={<Login />} />
-        </Routes>
-    </div>
-  )
-}
+    <Routes>
+      <Route path="/" element={<AuthProviders />}>
+        <Route index element={<CreateWorkSpace />} />
 
-export default Routing
+        <Route path="Semicoln-App" element={<AppLayout />}>
+          <Route index element={<Semicoln />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Route>
+
+      <Route path="Auth">
+        <Route path="Signup" element={<Signup />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="ForgotPassword" element={<ForgotPassword />} />
+      </Route>
+
+      <Route path="*" element={<NotFound/>} />
+    </Routes>
+  );
+};
+
+export default Routing;

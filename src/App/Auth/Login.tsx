@@ -1,11 +1,32 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { ILogin } from "@/Features/auth/type";
+import { LoginSchema } from "@/Features/auth/services";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
+const {register,handleSubmit,formState:{errors}} = useForm({
+  resolver: zodResolver(LoginSchema),
+  defaultValues: {
+    email: "",
+    password: "",
+  },
 
+})
+const onsubmit = async(data:ILogin) => {
+  try {
+    console.log(data);
+    setIsPending(false);
+    navigate("/");
+  } catch (error) {
+    console.log(error);
+    setIsPending(false);
+  }
+}
   return (
     <main className="p-2 grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
       <section className="flex-1 flex flex-col bg-white h-full">
@@ -18,7 +39,7 @@ const Login = () => {
           </button>
         </header>
         <div className="flex-1 flex flex-col items-center justify-center px-6 pb-12">
-          <form className="w-full max-w-md">
+          <form onSubmit={handleSubmit(onsubmit)} className="w-full max-w-md">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Welcome Back
             </h1>
@@ -33,11 +54,12 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
+                {...register("email")}
                 placeholder="emmanuelbamidele@gmail.com"
                 className="w-full px-4 py-3 border border-[#4A5FE8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5FE8] focus:border-transparent"
                 required
               />
+              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
 
             <div className="mb-6">
@@ -51,11 +73,13 @@ const Login = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  name="password"
+                  {...register("password")}
                   placeholder="• • • • • • •"
                   className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5FE8] focus:border-transparent"
                   required
+                  
                 />
+                {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -77,7 +101,7 @@ const Login = () => {
               type="submit"
               className="w-full  bg-[#4A5FE8] text-white py-3.5 rounded-lg font-semibold hover:bg-[#3B4DD4] transition-colors shadow-lg shadow-blue-500/30"
             >
-              Login
+              {isPending ? "Logging in..." : "Login"}
             </button>
           </form>
 
