@@ -8,11 +8,12 @@ import { navItems } from "../../type";
 
 export default function Sidebar() {
   const location = useLocation();
+  console.log();
   const navigate = useNavigate();
 
   return (
     <aside className="flex h-screen">
-      <div className="w-16 bg-blue-600 flex flex-col items-center py-4 gap-6">
+      <div className="w-14 bg-blue-600 flex flex-col items-center py-4 gap-6">
         <Avatar className="h-10 w-10 border-2 border-white">
           <AvatarFallback className="bg-white text-blue-600 font-bold">
             OF
@@ -29,7 +30,7 @@ export default function Sidebar() {
         <nav className="flex-1 px-3 space-y-1 md:hidden flex flex-col gap-4">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = location.pathname === item.path;
+            const isActive = location.pathname.startsWith(item.path);
 
             return (
               <Link
@@ -39,17 +40,17 @@ export default function Sidebar() {
                   "relative flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium transition",
                   isActive
                     ? "text-blue-600 bg-blue-50"
-                    : "text-gray-600 hover:bg-gray-100"
+                    : "text-gray-200 hover:bg-blue-400"
                 )}
               >
-                <Icon className="h-6 w-6" />
+                <Icon className="h-4 w-4" />
               </Link>
             );
           })}
         </nav>
       </div>
 
-      <div className="hidden md:flex w-64 bg-white border-r flex-col">
+      <div className="hidden md:flex w-44 bg-white border-r flex-col">
         <div className="px-6 py-6">
           <h2 className="font-semibold text-gray-900">Me & I</h2>
           <p className="text-sm text-gray-400">Emmanuel's Space</p>
@@ -58,7 +59,7 @@ export default function Sidebar() {
         <nav className="flex-1 px-3 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = location.pathname === item.path;
+            const isActive = location.pathname.startsWith(item.path);
 
             return (
               <Link

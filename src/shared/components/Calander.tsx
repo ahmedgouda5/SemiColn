@@ -10,7 +10,7 @@ export function Calendar() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-lg border"
+      className="rounded-lg border bg-gray-50"
       captionLayout="dropdown"
     />
   )

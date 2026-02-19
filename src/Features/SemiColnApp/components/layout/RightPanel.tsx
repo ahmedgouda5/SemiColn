@@ -1,6 +1,5 @@
 // src/components/layout/RightPanel.tsx
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ProfileUpdateAlert from "./profileUpateAlert";
 import { Calendar } from "@/shared/components/Calander";
@@ -33,16 +32,12 @@ export default function RightPanel() {
             <TabsTrigger value="reminder">Reminder</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="calendar" className="mt-4">
-            <Card className="p-4">
+          <TabsContent value="calendar" className="mt-4 ">
               <Calendar />
-            </Card>
           </TabsContent>
 
           <TabsContent value="reminder">
-            <Card className="p-4">
               <p className="text-sm text-gray-500">No reminders yet</p>
-            </Card>
           </TabsContent>
         </Tabs>
       </div>

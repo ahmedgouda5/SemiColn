@@ -2,9 +2,9 @@ export type UploadState = "empty" | "preview" | "saved";
 import { Home, CheckSquare, Settings } from "lucide-react";
 
 export const navItems = [
-  { icon: Home, label: "Overview", path: "/Semicoln-App" },
-  { icon: CheckSquare, label: "Tasks", path: "/Semicoln-App/tasks" },
-  { icon: Settings, label: "Settings", path: "/Semicoln-App/settings" },
+  { icon: Home, label: "overview", path: "/Semicoln-App/app" },
+  { icon: CheckSquare, label: "tasks", path: "/Semicoln-App/tasks" },
+  { icon: Settings, label: "settings", path: "/Semicoln-App/settings" },
 ];
 
 export const calendarDays = [
@@ -23,6 +23,8 @@ export interface Task {
   id: string;
   title: string;
   status: TaskStatus;
+  startDate: string;
+  endDate: string;
 }
 
 export type TabType = "all" | TaskStatus;

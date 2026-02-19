@@ -7,6 +7,7 @@ import {
   getTaskCount,
 } from "../../services/services";
 import TaskAddModel from "./TaskAddModel";
+import { Link } from "react-router-dom";
 
 const TasksLayout: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("all");
@@ -17,9 +18,9 @@ const TasksLayout: React.FC = () => {
       : tasks.filter((task) => task.status === activeTab);
 
   return (
-    <div className="flex flex-col  bg-gray-50">
+    <div className="flex flex-col  bg-gray-50 rounded-lg">
       <div className="shrink-0 bg-white border-b border-gray-200">
-        <div className="px-8 py-6">
+        <div className="px-3 py-6">
           <div className="mb-5">
             <h1 className="text-2xl font-semibold text-gray-900">Tasks</h1>
             <p className="text-sm text-gray-500 mt-1">
@@ -111,14 +112,14 @@ const TasksLayout: React.FC = () => {
             </div>
 
             <div>
-              <TaskAddModel />
+              <TaskAddModel typeofAction="create" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-3 md:px-6 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-5">
           {filteredTasks.map((task, index) => (
             <div
               key={index}
@@ -139,8 +140,8 @@ const TasksLayout: React.FC = () => {
                 {task.title}
               </h3>
 
-              <a
-                href="#"
+              <Link
+                to={`/Semicoln-App/tasks/${task.id}`}
                 className="inline-flex items-center gap-1.5 text-indigo-600 text-sm font-medium hover:gap-2.5 transition-all"
               >
                 View Task
@@ -157,7 +158,7 @@ const TasksLayout: React.FC = () => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
