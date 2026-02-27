@@ -3,9 +3,11 @@ import {
   AlertDialogContent,
   AlertDialogTrigger,
   AlertDialogCancel,
+  AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { X, Calendar, Edit, Trash2 } from "lucide-react";
+import { handelDeleteTask } from "../../services/services";
 
 const TaskAddModel = ({
   typeofAction,
@@ -39,9 +41,13 @@ const TaskAddModel = ({
               <AlertDialogCancel className="flex-1 bg-primary-Blue text-white py-2 rounded-md hover:bg-primary-Blue/80 transition-colors font-medium border-0">
                 No
               </AlertDialogCancel>
-              <button className="flex-1 bg-red-100 text-red-500 py-2 rounded-md hover:bg-red-200 transition-colors font-medium">
+
+              <AlertDialogAction
+                onClick={handelDeleteTask}
+                className="flex-1 bg-red-100 text-red-500 py-2 rounded-md hover:bg-red-200 transition-colors font-medium"
+              >
                 Yes
-              </button>
+              </AlertDialogAction>
             </div>
           </AlertDialogContent>
         </AlertDialog>

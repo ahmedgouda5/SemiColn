@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { X, Check, User } from "lucide-react";
 import type { UploadState } from "../../type";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 
 const ProfileUpdateAlert = () => {
@@ -39,10 +40,15 @@ const ProfileUpdateAlert = () => {
   return (
     <>
       <Button
-        className="w-full bg-primary-Blue hover:bg-primary-Blue/80 text-white"
+        variant="outline"
+        size="icon"
         onClick={() => setOpen(true)}
       >
-        My Profile
+         <Avatar className="h-12 w-12 bg-black">
+            <AvatarFallback className="bg-black text-white font-bold">
+              OF
+            </AvatarFallback>
+          </Avatar>
       </Button>
 
       <AlertDialog open={open} onOpenChange={setOpen}>

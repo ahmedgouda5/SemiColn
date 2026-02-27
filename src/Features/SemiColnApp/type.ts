@@ -2,9 +2,9 @@ export type UploadState = "empty" | "preview" | "saved";
 import { Home, CheckSquare, Settings } from "lucide-react";
 
 export const navItems = [
-  { icon: Home, label: "overview", path: "/Semicoln-App/app" },
-  { icon: CheckSquare, label: "tasks", path: "/Semicoln-App/tasks" },
-  { icon: Settings, label: "settings", path: "/Semicoln-App/settings" },
+  { icon: Home, label: "overview", path: "/Semicoln/app" },
+  { icon: CheckSquare, label: "tasks", path: "/Semicoln/tasks" },
+  { icon: Settings, label: "settings", path: "/Semicoln/settings" },
 ];
 
 export const calendarDays = [

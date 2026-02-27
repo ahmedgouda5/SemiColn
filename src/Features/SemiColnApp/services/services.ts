@@ -1,6 +1,6 @@
 import { tasks } from "../data";
 import type { TabType, TaskStatus } from "../type";
-
+import { toast } from "react-toastify";
 export const getStatusColor = (status: TaskStatus | undefined): string => {
   switch (status) {
     case "pending":
@@ -30,4 +30,8 @@ export const getStatusLabel = (status: TaskStatus | undefined): string => {
 export const getTaskCount = (type: TabType): number => {
   if (type === "all") return tasks.length;
   return tasks.filter((task) => task.status === type).length;
+};
+
+export const handelDeleteTask = () => {
+  toast.success("Task deleted successfully");
 };

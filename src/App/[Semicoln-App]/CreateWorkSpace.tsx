@@ -4,7 +4,7 @@ const CreateWorkSpace = () => {
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate("/Semicoln-App");
+    navigate("/Semicoln/app");
   };
   return (
     <div className="flex items-center justify-center min-h-screen  w-full bg-linear-to-br  p-2 ">

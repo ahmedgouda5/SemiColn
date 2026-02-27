@@ -141,7 +141,7 @@ const TasksLayout: React.FC = () => {
               </h3>
 
               <Link
-                to={`/Semicoln-App/tasks/${task.id}`}
+                to={`/Semicoln/tasks/${task.id}`}
                 className="inline-flex items-center gap-1.5 text-indigo-600 text-sm font-medium hover:gap-2.5 transition-all"
               >
                 View Task

@@ -10,16 +10,18 @@ import Tasks from "@/App/[Semicoln-App]/Tasks";
 import Settings from "@/App/[Semicoln-App]/Settings";
 import NotFound from "@/App/[Semicoln-App]/Not-found";
 import TaskDetails from "@/App/[Semicoln-App]/TaskDetails";
+import Profile from "@/App/[Semicoln-App]/Profile";
 
 const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<AuthProviders />}>
         <Route index element={<CreateWorkSpace />} />
-        <Route path="Semicoln-App" element={<AppLayout />}>
+        <Route path="Semicoln" element={<AppLayout />}>
           <Route path="app" element={<Semicoln />} />
           <Route path="tasks" element={<Tasks />} />
           <Route path="tasks/:id" element={<TaskDetails />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Route>
