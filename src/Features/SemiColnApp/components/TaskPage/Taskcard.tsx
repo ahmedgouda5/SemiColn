@@ -18,12 +18,14 @@ const TasksLayout: React.FC = () => {
       : tasks.filter((task) => task.status === activeTab);
 
   return (
-    <div className="flex flex-col  bg-gray-50 rounded-lg">
-      <div className="shrink-0 bg-white border-b border-gray-200">
+    <div className="flex flex-col bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950 rounded-lg">
+      <div className="shrink-0 bg-white/90 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 backdrop-blur-sm">
         <div className="px-3 py-6">
           <div className="mb-5">
-            <h1 className="text-2xl font-semibold text-gray-900">Tasks</h1>
-            <p className="text-sm text-gray-500 mt-1">
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Tasks
+            </h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               Your tasks in your space.
             </p>
           </div>
@@ -123,20 +125,20 @@ const TasksLayout: React.FC = () => {
           {filteredTasks.map((task, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-medium text-gray-400">
                   {task.id}
                 </span>
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}
+                  className={`px-3  py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}
                 >
                   {getStatusLabel(task.status)}
                 </span>
               </div>
 
-              <h3 className="text-base font-semibold text-gray-900 mb-4 leading-relaxed">
+              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-50 mb-4 leading-relaxed">
                 {task.title}
               </h3>
 

@@ -33,7 +33,7 @@ const Profile = () => {
     filterOptions.find((o) => o.value === filter)?.label ?? "Filter Items";
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 p-4 md:p-8">
       <div className="relative rounded-2xl overflow-hidden bg-gray-900 mb-8 h-44 flex items-end">
         <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-indigo-500 opacity-80" />
         <div className="absolute bottom-0 right-24 w-28 h-28 rounded-full bg-yellow-400 opacity-80 translate-y-1/2" />
@@ -101,7 +101,7 @@ const Profile = () => {
           </button>
 
           {dropdownOpen && (
-            <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-100 rounded-lg shadow-lg z-10 overflow-hidden">
+            <div className="absolute top-full left-0 mt-1 w-48 bg-white  border border-gray-100 rounded-lg shadow-lg z-10 overflow-hidden">
               {filterOptions.map((opt) => (
                 <button
                   key={opt.value}
@@ -132,7 +132,7 @@ const Profile = () => {
             {filteredTasks.map((task, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-medium text-gray-400">
@@ -147,7 +147,7 @@ const Profile = () => {
                   </span>
                 </div>
 
-                <h3 className="text-sm font-semibold text-gray-900 mb-4 leading-relaxed line-clamp-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-4 leading-relaxed line-clamp-2">
                   {task.title}
                 </h3>
 

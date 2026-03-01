@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function RightPanel() {
   return (
-    <aside className="hidden xl:flex w-72 bg-white border-l flex-col">
+    <aside className="hidden xl:flex w-72 bg-white dark:bg-gray-900 border-l flex-col">
       <div className="p-4 border-b flex items-center justify-between">
         <div className="flex items-center flex-col justify-center  w-full gap-3">
           <ProfileUpdateAlert />
@@ -26,7 +26,7 @@ export default function RightPanel() {
 
       <div className="flex-1 overflow-y-auto p-4">
         <Tabs defaultValue="calendar" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2 dark:bg-gray-900">
             <TabsTrigger value="calendar">Calendar</TabsTrigger>
             <TabsTrigger value="reminder">Reminder</TabsTrigger>
           </TabsList>

@@ -50,10 +50,10 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="hidden md:flex w-44 bg-white border-r flex-col">
+      <div className="hidden md:flex w-44 bg-white dark:bg-gray-900 border-r flex-col">
         <div className="px-6 py-6">
-          <h2 className="font-semibold text-gray-900">Me & I</h2>
-          <p className="text-sm text-gray-400">Emmanuel's Space</p>
+          <h2 className="font-semibold text-gray-900 dark:text-gray-50">Me & I</h2>
+          <p className="text-sm text-gray-400 ">Emmanuel's Space</p>
         </div>
 
         <nav className="flex-1 px-3 space-y-1">

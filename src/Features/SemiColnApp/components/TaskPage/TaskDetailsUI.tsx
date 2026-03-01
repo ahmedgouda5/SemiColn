@@ -16,7 +16,7 @@ const TaskDetailUi = ({ id }: { id: string }) => {
         <div className="flex items-center gap-3 mb-8">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center justify-center w-10 h-10 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center w-10 h-10 rounded-lg bg-white  border border-gray-200 hover:bg-gray-50 transition-colors"
             aria-label="Go back"
           >
             <ArrowLeft className="w-5 h-5 text-blue-600" />
@@ -28,9 +28,9 @@ const TaskDetailUi = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm p-8">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm p-8">
           <div className="flex items-start justify-between mb-6">
-            <h1 className="text-2xl font-semibold text-gray-900 flex-1 pr-4">
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 flex-1 pr-4">
               {task?.title}
             </h1>
             <div className="flex flex-col items-end gap-2">

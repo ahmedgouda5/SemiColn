@@ -19,13 +19,12 @@ const LogoutModel = () => {
         </button>
       </AlertDialogTrigger>
 
-      <AlertDialogContent className="max-w-md rounded-2xl">
-       
+      <AlertDialogContent className="max-w-md rounded-2xl bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50">
         <AlertDialogHeader className="mb-2 mt-3">
-          <AlertDialogTitle className="text-xl font-semibold text-gray-900">
+          <AlertDialogTitle className="text-xl font-semibold text-gray-900 dark:text-gray-50">
             You are about to LogOut
           </AlertDialogTitle>
-          <AlertDialogDescription className="text-sm text-gray-500 mt-1">
+          <AlertDialogDescription className="text-sm text-gray-500 dark:text-gray-300 mt-1">
             You can always log on to your task manager and continue from where you left off.
           </AlertDialogDescription>
         </AlertDialogHeader>

@@ -35,11 +35,11 @@ const SettingsPage = () => {
     <div className="">
       <div>
         <div className="flex justify-between items-center p-6  border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-900">Settings</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
         </div>
-        <div className="bg-gray-50">
+        <div className="bg-gray-50 dark:bg-gray-900">
           <div className="flex justify-between items-center p-6  ">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-50  mb-4">
               Account Settings
             </h2>
             <div>
@@ -49,7 +49,7 @@ const SettingsPage = () => {
 
           <div className="p-6 border-b border-gray-200 rounded-lg shadow-sm">
             <div className="mb-4 border border-gray-200 rounded-lg p-4">
-              <label className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+              <label className="flex items-center gap-2 text-sm text-gray-600  mb-2">
                 <div className="w-5 h-5 bg-blue-100 rounded flex items-center justify-center">
                   <svg
                     className="w-3 h-3 text-blue-600"
@@ -61,7 +61,7 @@ const SettingsPage = () => {
                 </div>
                 Display Name
               </label>
-              <div className="text-xl font-bold text-gray-900">Ahmed Gouda</div>
+              <div className="text-xl font-bold text-gray-900 dark:text-gray-50">Ahmed Gouda</div>
             </div>
 
             <div className="mb-4 border border-gray-200 rounded-lg p-4">
@@ -78,7 +78,7 @@ const SettingsPage = () => {
                 </div>
                 Email Address
               </label>
-              <div className="text-xl font-bold text-gray-900">
+              <div className="text-xl font-bold text-gray-900 dark:text-gray-50">
                 ahmed@semicoln.com
               </div>
             </div>
@@ -87,7 +87,7 @@ const SettingsPage = () => {
               <label className="text-sm text-gray-600 mb-2 block">
                 Password
               </label>
-              <div className="text-xl font-bold text-gray-900 tracking-wider">
+              <div className="text-xl font-bold text-gray-900 dark:text-gray-50 tracking-wider">
                 ••••••••
               </div>
             </div>
@@ -96,18 +96,18 @@ const SettingsPage = () => {
           </div>
         </div>
 
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-sm font-semibold text-gray-900 mb-4">
+        <div className="p-2 border-b border-gray-200">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-4">
             Notification Settings
           </h2>
 
-          <div className="space-y-4 bg-gray-50 rounded-lg p-4">
-            <div className="text-sm text-gray-600">
+          <div className="space-y-4 bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+            <div className="text-sm text-gray-600 dark:text-gray-50">
               Allow Desktop Notifications
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-900">
+              <span className="text-sm text-gray-900 dark:text-gray-50">
                 Send Critical Notifications to My Email
               </span>
               <button
@@ -127,14 +127,14 @@ const SettingsPage = () => {
           </div>
         </div>
 
-        <div className="p-6">
-          <h2 className="text-sm font-semibold text-gray-900 mb-4">
+        <div className="p-2">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-4">
             Accessibility Settings
           </h2>
 
-          <div className="space-y-4 bg-gray-50 rounded-lg p-4">
+          <div className="space-y-4 bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-900">Enable Dark Mode</span>
+              <span className="text-sm text-gray-900  dark:text-gray-50">Enable Dark Mode</span>
               <button
                 onClick={toggleDarkMode}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${

@@ -26,14 +26,16 @@ const TaskAddModel = ({
               <Trash2 className="w-5 h-5" />
             </button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="max-w-md p-6">
+          <AlertDialogContent className="max-w-md p-6 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50">
             <div className="flex justify-end">
               <AlertDialogCancel className="absolute top-4 right-4 text-gray-700 hover:text-gray-600">
                 <X size={20} />
               </AlertDialogCancel>
             </div>
-            <h2 className="text-2xl font-semibold mb-3">Delete Task</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-gray-50">
+              Delete Task
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               Are you sure you want to delete this task? This action cannot be
               undone.
             </p>
@@ -55,7 +57,6 @@ const TaskAddModel = ({
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button
-              variant="outline"
               className="w-full bg-primary-Blue text-white py-3 rounded-md hover:bg-primary-Blue/80 transition-colors font-medium"
             >
               {typeofAction === "create" ? (
@@ -66,33 +67,33 @@ const TaskAddModel = ({
             </Button>
           </AlertDialogTrigger>
 
-          <AlertDialogContent className="max-w-md p-6">
+          <AlertDialogContent className="max-w-md p-6 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50">
             <div className="flex justify-end ">
               <AlertDialogCancel className="absolute top-4 right-4 text-gray-700 hover:text-gray-600">
                 <X size={20} />
               </AlertDialogCancel>
             </div>
 
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-50">
               {typeofAction === "create" ? "Create Task" : "Edit Task"}
             </h2>
 
             <form action="">
               <div className="mb-4">
-                <label className="block text-sm text-gray-700 mb-2">
+                <label className="block text-sm text-gray-700 dark:text-gray-200 mb-2">
                   Task Name
                 </label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm text-gray-700 mb-2">
+                  <label className="block text-sm text-gray-700 dark:text-gray-200 mb-2">
                     Task Priority
                   </label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
+                  <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 appearance-none bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50">
                     <option>Less Important</option>
                     <option>Important</option>
                     <option>Very Important</option>
@@ -100,17 +101,17 @@ const TaskAddModel = ({
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-700 mb-2">
+                  <label className="block text-sm text-gray-700 dark:text-gray-200 mb-2">
                     Due Date
                   </label>
                   <div className="relative">
                     <input
                       type="text"
                       defaultValue="Today"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 pr-10 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50"
                     />
                     <Calendar
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
                       size={18}
                     />
                   </div>
@@ -118,13 +119,13 @@ const TaskAddModel = ({
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm text-gray-700 mb-2">
+                <label className="block text-sm text-gray-700 dark:text-gray-200 mb-2">
                   Task Description
                 </label>
                 <textarea
                   placeholder="Type your content here..."
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 resize-none bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50"
                 />
               </div>
 

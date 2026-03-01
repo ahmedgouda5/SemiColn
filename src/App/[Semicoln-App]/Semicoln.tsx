@@ -19,7 +19,6 @@ export default function Semicoln() {
 
         <Card className="card mb-8 bg-linear-to-r from-gray-900 to-blue-900 text-white overflow-hidden relative">
           <Button
-            variant="ghost"
             size="icon"
             className="absolute top-4 right-4 text-white hover:bg-white/20"
           >
@@ -58,7 +57,7 @@ export default function Semicoln() {
                     Hey Faith, Update your Profile Picture
                   </span>
                 </div>
-                <Button variant="ghost" className="text-blue-600">
+                <Button  className="text-blue-600">
                   Get Started →
                 </Button>
               </CardContent>
@@ -74,7 +73,7 @@ export default function Semicoln() {
                     Create your First Task in your Workspace
                   </span>
                 </div>
-                <Button variant="ghost" className="text-blue-600">
+                <Button  className="text-blue-600">
                   Get Started →
                 </Button>
               </CardContent>
