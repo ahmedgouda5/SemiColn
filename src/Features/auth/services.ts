@@ -1,55 +1,57 @@
-import z from "zod";
-export const ForgotPasswordSchema = z.object({
-  email: z.string().email("Invalid email address"),
-});
+import { toast } from "react-toastify";
+import { useUserStore } from "@/store/UserStore";
+import type { ILogin, ISignup } from "./type";
 
-export const LoginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters long"),
-});
+const BASE_URL = "http://localhost:3000/Auth";
 
-export const SignupSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters long"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters long"),
-});
+export const signup = async (data: ISignup) => {
+  const response = await fetch(`${BASE_URL}/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-// export const SignUp = async (data: ISignup) => {
-//   const { data: response, error } = await supabase.auth.signUp({
-//     email: data.email,
-//     password: data.password,
-//     options: {
-//       data: {
-//         name: data.name,
-//         emailRedirectTo: "http://localhost:5173/Auth/Login",
-//       },
-//     },
-//   });
+  const result = await response.json();
 
-//   if (error) {
-//     throw error;
-//   }
+  if (!response.ok) {
+    toast.error(result?.message || "Signup failed");
+    throw new Error(result?.message);
+  }
 
-//   return response;
-// };
+  toast.success("Account created successfully");
 
-// export const Login = async (data: ILogin) => {
-//   const { data: response, error } = await supabase.auth.signInWithPassword({
-//     email: data.email,
-//     password: data.password,
-//   });
+  return result;
+};
 
-//   if (error) {
-//     throw error;
-//   }
+export const login = async (data: ILogin) => {
+  const response = await fetch(`${BASE_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-//   return response;
-// };
+  const result = await response.json();
+  if (!response.ok) {
+    toast.error(result?.message || "Login failed");
+    throw new Error(result?.message);
+  }
+  const user = result?.user;
+  if (user) {
+    useUserStore.getState().setUser(
+      user.username ?? user.name ?? "",
+      user.email ?? ""
+    );
+  }
 
-// export const Logout = async () => {
-//   const { error } = await supabase.auth.signOut();
+  localStorage.setItem("token", result.token);
+  localStorage.setItem("userId", result.user.id);
 
-//   if (error) {
-//     throw error;
-//   }
-// };
+  toast.success("Login successfully");
+
+  return result;
+};
+

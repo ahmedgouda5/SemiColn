@@ -4,23 +4,30 @@ import ProfileUpdateAlert from "./profileUpateAlert";
 import { Calendar } from "@/shared/components/Calander";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useUserStore } from "@/store/UserStore";
 
 export default function RightPanel() {
+  const userName = useUserStore((s) => s.userName);
+  const email = useUserStore((s) => s.email);
   return (
     <aside className="hidden xl:flex w-72 bg-white dark:bg-gray-900 border-l flex-col">
       <div className="p-4 border-b flex items-center justify-between">
         <div className="flex items-center flex-col justify-center  w-full gap-3">
           <ProfileUpdateAlert />
           <div>
-            <div className="font-semibold text-sm">Oni Faith Ayoola</div>
-            <div className="text-xs text-gray-500">onifaith@gmail.com</div>
+            <div className="font-semibold text-sm text-center">
+              {userName ?? ""}
+            </div>
+            <div className="text-xs text-gray-500">{email ?? ""}</div>
           </div>
         </div>
       </div>
 
       <div className="p-4">
         <Button className="w-full bg-primary-Blue hover:bg-primary-Blue/80 text-white">
-           <Link to="/Semicoln/profile" className=" w-full">My Profile</Link>
+          <Link to="/Semicoln/profile" className=" w-full">
+            My Profile
+          </Link>
         </Button>
       </div>
 

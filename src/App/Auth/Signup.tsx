@@ -1,34 +1,47 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
-import { SignupSchema} from "@/Features/auth/services";
-import type {ISignup} from "@/Features/auth/type";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { signup } from "@/Features/auth/services";
+import type { ISignup } from "@/Features/auth/type";
+import { SignupSchema } from "@/lib/Schema/AuthSchema";
+
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isPending, setIsPending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
-const {register,handleSubmit,formState:{errors}} = useForm({
-  resolver: zodResolver(SignupSchema),
-  defaultValues: {
-    name: "",
-    email: "",
-    password: "",
-  },  
 
-})
-const onsubmit = async(data:ISignup) => {
-  try {
-    setIsPending(true);
-    console.log(data);
-    setIsPending(false);
-    navigate("/Auth/Login");
-  } catch (error) {
-    console.log(error);
-    setIsPending(false);
-  }
-}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignup>({
+    resolver: zodResolver(SignupSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  const onsubmit = async (data: ISignup) => {
+    try {
+      setIsPending(true);
+      setErrorMessage(null);
+      await signup(data);
+      navigate("/Auth/Login");
+    } catch (error) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("Something went wrong while creating your account.");
+      }
+    } finally {
+      setIsPending(false);
+    }
+  };
   return (
     <main className="p-2 grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
       <section className="h-full hidden md:flex">
@@ -51,28 +64,37 @@ const onsubmit = async(data:ISignup) => {
         </header>
 
         <div className="flex-1 flex items-center justify-center px-6 pb-12">
-          <form onSubmit={handleSubmit(onsubmit)} className="w-full max-w-md">
+          <form onSubmit={handleSubmit(onsubmit)} className="w-full max-w-md" noValidate>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Create an Account
             </h1>
             <p className="text-gray-500 mb-8">It's Simple and Easy!!</p>
 
+            {errorMessage && (
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {errorMessage}
+              </div>
+            )}
+
             <div className="mb-5">
               <label
-                htmlFor="name"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Fullname
+                Username
               </label>
               <input
                 type="text"
-                id="name"
-                {...register("name")}
-                placeholder="Emmanuel Adebisi"
+                id="username"
+                {...register("username")}
+                placeholder="emmanuel_adebisi"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5FE8] focus:border-transparent"
                 required
+                disabled={isPending}
               />
-              {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+              {errors.username && (
+                <p className="text-red-500">{errors.username.message}</p>
+              )}
             </div>
 
             <div className="mb-5">
@@ -89,6 +111,7 @@ const onsubmit = async(data:ISignup) => {
                 placeholder="emmanuelbamidele@gmail.com"
                 className="w-full px-4 py-3 border border-[#4A5FE8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5FE8] focus:border-transparent"
                 required
+                disabled={isPending}
               />
               {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
@@ -109,6 +132,7 @@ const onsubmit = async(data:ISignup) => {
                   placeholder="• • • • • • •"
                   className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5FE8] focus:border-transparent"
                   required
+                  disabled={isPending}
                 />
                 {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                 <button
@@ -130,7 +154,8 @@ const onsubmit = async(data:ISignup) => {
 
             <button
               type="submit"
-              className="w-full bg-[#4A5FE8] text-white py-3.5 rounded-lg font-semibold hover:bg-[#3B4DD4] transition-colors shadow-lg shadow-blue-500/30"
+              disabled={isPending}
+              className="w-full bg-[#4A5FE8] text-white py-3.5 rounded-lg font-semibold hover:bg-[#3B4DD4] transition-colors shadow-lg shadow-blue-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isPending ? "Creating Account..." : "Create Account"}
             </button>

@@ -2,8 +2,12 @@ import { X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import "../../Features/SemiColnApp/style.css";
+import { useUserStore } from "@/store/UserStore";
 
 export default function Semicoln() {
+
+    const UserName = useUserStore((s) => s.userName);
+
   return (
     <div className="min-h-full">
      
@@ -12,7 +16,7 @@ export default function Semicoln() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
             <span className="text-4xl">👋</span>
-            Hi Faith,
+            Hi {UserName ?? "user"},
           </h1>
           <p className="text-gray-600">Welcome to Semicolon Task Management</p>
         </div>
@@ -54,7 +58,7 @@ export default function Semicoln() {
                     <span className="text-2xl">👤</span>
                   </div>
                   <span className="font-medium">
-                    Hey Faith, Update your Profile Picture
+                    Hey {UserName??"user"}, Update your Profile Picture
                   </span>
                 </div>
                 <Button  className="text-blue-600">

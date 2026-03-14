@@ -5,18 +5,31 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { navItems } from "../../type";
+import { useUserStore } from "@/store/UserStore";
 
 export default function Sidebar() {
   const location = useLocation();
   console.log();
   const navigate = useNavigate();
+  const userName = useUserStore((s) => s.userName);
+
+
+  const initials = userName
+    ? userName
+        .trim()
+        .split(/\s+/)
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "?";
 
   return (
     <aside className="flex h-screen">
       <div className="w-14 bg-blue-600 flex flex-col items-center py-4 gap-6">
         <Avatar className="h-10 w-10 border-2 border-white">
           <AvatarFallback className="bg-white text-blue-600 font-bold">
-            OF
+          {initials}
           </AvatarFallback>
         </Avatar>
 

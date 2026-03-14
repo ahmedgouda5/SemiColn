@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useUserStore } from "@/store/UserStore";
 import { tasks } from "../../Features/SemiColnApp/data";
 import {
   getStatusColor,
@@ -19,12 +20,19 @@ const filterOptions: { label: string; value: FilterOption }[] = [
 const Profile = () => {
   const [filter, setFilter] = useState<FilterOption>("all");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const userName = useUserStore((s) => s.userName);
+  const email = useUserStore((s) => s.email);
 
-  const user = {
-    name: "Ahmed Gouda",
-    email: "ahmed@semicoln.com",
-    initials: "AG",
-  };
+
+  const initials = userName
+    ? userName
+        .trim()
+        .split(/\s+/)
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "?";
 
   const filteredTasks =
     filter === "all" ? tasks : tasks.filter((t) => t.status === filter);
@@ -41,15 +49,15 @@ const Profile = () => {
         <div className="relative z-10 flex items-center gap-4 p-6">
           <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center shrink-0">
             <span className="text-gray-900 font-bold text-lg">
-              {user.initials}
+              {initials}
             </span>
           </div>
 
           <div>
             <h1 className="text-white font-semibold text-xl leading-tight">
-              {user.name}
+              {userName ?? "User"}
             </h1>
-            <p className="text-gray-400 text-sm">{user.email}</p>
+            <p className="text-gray-400 text-sm">{email ?? "—"}</p>
           </div>
         </div>
       </div>

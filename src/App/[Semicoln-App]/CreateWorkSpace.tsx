@@ -7,7 +7,7 @@ const CreateWorkSpace = () => {
     navigate("/Semicoln/app");
   };
   return (
-    <div className="flex items-center justify-center min-h-screen  w-full bg-linear-to-br  p-2 ">
+    <div className="flex items-center justify-center min-h-screen  w-full bg-linear-to-br dark:bg-gray-800 p-2 ">
       <div className="w-full  grid lg:grid-cols-2 gap-0  rounded-3xl  overflow-hidden  ">
         <section className="hidden lg:block">
           <img
@@ -79,12 +79,21 @@ const CreateWorkSpace = () => {
               </p>
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Next
-            </button>
+            <div className="flex justify-between gap-2">
+              <button
+                type="button"
+                className="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+              >
+                Next
+              </button>
+              <button
+                type="submit"
+                onClick={() => navigate("/Semicoln/app")}
+                className="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+              >
+                Skip
+              </button>
+            </div>
           </form>
         </section>
       </div>

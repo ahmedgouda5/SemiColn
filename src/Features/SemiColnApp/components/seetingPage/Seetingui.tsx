@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@/components/Providers/theme-provider";
 import EditAccount from "./EditAccount";
 import LogoutModel from "./LogoutModel";
+import { useUserStore } from "@/store/UserStore";
 
 const SettingsPage = () => {
+  const userName = useUserStore((s) => s.userName);
+  const email = useUserStore((s) => s.email);
   const { theme, setTheme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -35,7 +38,9 @@ const SettingsPage = () => {
     <div className="">
       <div>
         <div className="flex justify-between items-center p-6  border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">Settings</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+            Settings
+          </h1>
         </div>
         <div className="bg-gray-50 dark:bg-gray-900">
           <div className="flex justify-between items-center p-6  ">
@@ -61,7 +66,9 @@ const SettingsPage = () => {
                 </div>
                 Display Name
               </label>
-              <div className="text-xl font-bold text-gray-900 dark:text-gray-50">Ahmed Gouda</div>
+              <div className="text-xl font-bold text-gray-900 dark:text-gray-50">
+                {userName ?? "user"}
+              </div>
             </div>
 
             <div className="mb-4 border border-gray-200 rounded-lg p-4">
@@ -79,7 +86,7 @@ const SettingsPage = () => {
                 Email Address
               </label>
               <div className="text-xl font-bold text-gray-900 dark:text-gray-50">
-                ahmed@semicoln.com
+                {email ?? "Email"}
               </div>
             </div>
 
@@ -134,7 +141,9 @@ const SettingsPage = () => {
 
           <div className="space-y-4 bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-900  dark:text-gray-50">Enable Dark Mode</span>
+              <span className="text-sm text-gray-900  dark:text-gray-50">
+                Enable Dark Mode
+              </span>
               <button
                 onClick={toggleDarkMode}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${

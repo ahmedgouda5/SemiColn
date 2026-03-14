@@ -1,6 +1,7 @@
 import { tasks } from "../data";
 import type { TabType, TaskStatus } from "../type";
 import { toast } from "react-toastify";
+import { useUserStore } from "@/store/UserStore";
 export const getStatusColor = (status: TaskStatus | undefined): string => {
   switch (status) {
     case "pending":
@@ -34,4 +35,13 @@ export const getTaskCount = (type: TabType): number => {
 
 export const handelDeleteTask = () => {
   toast.success("Task deleted successfully");
+};
+
+
+
+export const Logout = () => {
+  useUserStore.getState().clearUser();
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+  window.location.reload();
 };

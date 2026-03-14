@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ForgotPasswordSchema } from "@/Features/auth/services";
 import type { IForgotPassword } from "@/Features/auth/type";
+import { ForgotPasswordSchema } from "@/lib/Schema/AuthSchema";
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const { register,handleSubmit, formState: { errors } } = useForm({

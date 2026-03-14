@@ -1,3 +1,4 @@
+import { Logout } from "./../../services/services";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,7 +26,8 @@ const LogoutModel = () => {
             You are about to LogOut
           </AlertDialogTitle>
           <AlertDialogDescription className="text-sm text-gray-500 dark:text-gray-300 mt-1">
-            You can always log on to your task manager and continue from where you left off.
+            You can always log on to your task manager and continue from where
+            you left off.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
@@ -33,7 +35,10 @@ const LogoutModel = () => {
           <AlertDialogCancel className="flex-1 bg-[#4A5FE8] text-white hover:bg-[#3B4DD4] border-0 rounded-lg text-sm font-medium py-2.5">
             No, This was a Mistake
           </AlertDialogCancel>
-          <AlertDialogAction className="flex-1 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-sm font-semibold py-2.5">
+          <AlertDialogAction
+            onClick={Logout}
+            className="flex-1 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-sm font-semibold py-2.5"
+          >
             Yes, Log Me Out
           </AlertDialogAction>
         </AlertDialogFooter>
@@ -43,4 +48,3 @@ const LogoutModel = () => {
 };
 
 export default LogoutModel;
-

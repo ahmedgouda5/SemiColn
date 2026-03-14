@@ -9,13 +9,24 @@ import { Button } from "@/components/ui/button";
 import { X, Check, User } from "lucide-react";
 import type { UploadState } from "../../type";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
+import { useUserStore } from "@/store/UserStore";
 
 const ProfileUpdateAlert = () => {
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<UploadState>("empty");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const userName = useUserStore((s) => s.userName);
+
+  const initials = userName
+    ? userName
+        .trim()
+        .split(/\s+/)
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "?";
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,23 +50,21 @@ const ProfileUpdateAlert = () => {
 
   return (
     <>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => setOpen(true)}
-      >
-         <Avatar className="h-12 w-12 bg-black">
-            <AvatarFallback className="bg-black text-white font-bold">
-              OF
-            </AvatarFallback>
-          </Avatar>
+      <Button  size="icon" onClick={() => setOpen(true)}>
+        <Avatar className="h-12 w-12 bg-black">
+          <AvatarFallback className="bg-black text-white font-bold">
+            {initials}
+          </AvatarFallback>
+        </Avatar>
       </Button>
 
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogContent className="max-w-sm p-6">
           <AlertDialogHeader className="flex flex-row items-center justify-between mb-4">
             <AlertDialogTitle className="text-base font-semibold">
-              {state === "saved" ? "Profile Picture Taken" : "Upload your Profile Picture"}
+              {state === "saved"
+                ? "Profile Picture Taken"
+                : "Upload your Profile Picture"}
             </AlertDialogTitle>
             <button
               onClick={handleClose}
@@ -74,7 +83,9 @@ const ProfileUpdateAlert = () => {
             {state === "empty" && (
               <div className="flex flex-col items-center gap-2 text-gray-400">
                 <User size={48} strokeWidth={1} />
-                <span className="text-xs text-center px-4">Tap here to Select Photo</span>
+                <span className="text-xs text-center px-4">
+                  Tap here to Select Photo
+                </span>
               </div>
             )}
 
@@ -116,7 +127,6 @@ const ProfileUpdateAlert = () => {
 
             {state === "saved" && (
               <Button
-                variant="outline"
                 className="w-full"
                 onClick={handleClose}
               >
