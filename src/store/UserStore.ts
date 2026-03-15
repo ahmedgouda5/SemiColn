@@ -4,7 +4,9 @@ import { persist } from "zustand/middleware";
 interface UserState {
   userName: string | null;
   email: string | null;
-  setUser: (userName: string, email: string) => void;
+  id:string|null;
+  token:string|null;
+  setUser: (userName: string, email: string, id: string, token: string) => void;
   clearUser: () => void;
 }
 
@@ -13,12 +15,19 @@ export const useUserStore = create<UserState>()(
     (set) => ({
       userName: null,
       email: null,
-      setUser: (userName, email) => set({ userName, email }),
-      clearUser: () => set({ userName: null, email: null }),
+      id:null,
+      token:null,
+      setUser: (userName, email, id, token) => set({ userName, email, id, token }),
+      clearUser: () => set({ userName: null, email: null, id: null, token: null }),
     }),
     {
       name: "semicoln-user",
-      partialize: (state) => ({ userName: state.userName, email: state.email }),
+      partialize: (state) => ({
+        userName: state.userName,
+        email: state.email,
+        id: state.id,
+        token: state.token,
+      }),
     }
   )
 );

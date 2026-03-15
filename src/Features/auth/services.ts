@@ -40,15 +40,18 @@ export const login = async (data: ILogin) => {
     throw new Error(result?.message);
   }
   const user = result?.user;
+  console.log(result);
+  
   if (user) {
     useUserStore.getState().setUser(
       user.username ?? user.name ?? "",
-      user.email ?? ""
+      user.email ?? "",
+      user.id ?? "",
+      result.token??""
     );
   }
 
-  localStorage.setItem("token", result.token);
-  localStorage.setItem("userId", result.user.id);
+
 
   toast.success("Login successfully");
 

@@ -1,24 +1,10 @@
-import { useState, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { useUserStore } from "../../store/UserStore";
 
 const AuthProviders = () => {
-  const [session, setSession] = useState(localStorage.getItem("token"));
+  const token = useUserStore((state) => state.token);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setSession(localStorage.getItem("token"));
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
- 
-
-  if (!session) {
+  if (!token) {
     return <Navigate to="/Auth/Login" replace />;
   }
 

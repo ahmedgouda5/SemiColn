@@ -1,9 +1,42 @@
 import WorkSpaceImage from "../../assets/images/WorkSpace.png";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { HandleCreateWokSpace } from "@/Features/SemiColnApp/services/services";
+import { toast } from "react-toastify";
+
+const workspaceSchema = z.object({
+  workspaceName: z
+    .string()
+    .min(1, "Workspace name is required")
+    .max(100, "Workspace name must be at most 100 characters"),
+  workspaceDescription: z
+    .string()
+    .min(1, "Workspace description is required")
+    .max(500, "Workspace description must be at most 500 characters"),
+});
+
+type WorkspaceFormValues = z.infer<typeof workspaceSchema>;
+
 const CreateWorkSpace = () => {
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<WorkspaceFormValues>({
+    resolver: zodResolver(workspaceSchema),
+    defaultValues: {
+      workspaceName: "",
+      workspaceDescription: "",
+    },
+  });
+
+  const onSubmit = async (data: WorkspaceFormValues) => {
+    const res = await HandleCreateWokSpace(data);
+    toast.done(res.message);
     navigate("/Semicoln/app");
   };
   return (
@@ -27,7 +60,7 @@ const CreateWorkSpace = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label
                 htmlFor="workspaceName"
@@ -37,15 +70,20 @@ const CreateWorkSpace = () => {
               </label>
               <input
                 id="workspaceName"
-                name="workspaceName"
                 type="text"
-                required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent outline-none transition-all"
                 placeholder="Enter workspace name"
+                {...register("workspaceName")}
               />
-              <p className="mt-2 text-xs text-gray-400">
-                Information about the label
-              </p>
+              {errors.workspaceName ? (
+                <p className="mt-2 text-xs text-red-500">
+                  {errors.workspaceName.message}
+                </p>
+              ) : (
+                <p className="mt-2 text-xs text-gray-400">
+                  Information about the label
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -56,32 +94,37 @@ const CreateWorkSpace = () => {
               </label>
               <textarea
                 id="workspaceDescription"
-                name="workspaceDescription"
                 rows={4}
-                required
                 className="
-    w-full
-    h-15
-    px-4 py-3
-    border border-gray-300
-    rounded-lg
-    resize-none
-    focus:ring-2 focus:ring-[#4F46E5]
-    focus:border-transparent
-    outline-none
-    transition-all
-  "
+      w-full
+      h-15
+      px-4 py-3
+      border border-gray-300
+      rounded-lg
+      resize-none
+      focus:ring-2 focus:ring-[#4F46E5]
+      focus:border-transparent
+      outline-none
+      transition-all
+    "
                 placeholder="Enter workspace description"
+                {...register("workspaceDescription")}
               />
 
-              <p className="mt-2 text-xs text-gray-400">
-                Information about the label
-              </p>
+              {errors.workspaceDescription ? (
+                <p className="mt-2 text-xs text-red-500">
+                  {errors.workspaceDescription.message}
+                </p>
+              ) : (
+                <p className="mt-2 text-xs text-gray-400">
+                  Information about the label
+                </p>
+              )}
             </div>
 
             <div className="flex justify-between gap-2">
               <button
-                type="button"
+                type="submit"
                 className="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 Next

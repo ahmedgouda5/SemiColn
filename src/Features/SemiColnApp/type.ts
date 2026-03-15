@@ -28,3 +28,9 @@ export interface Task {
 }
 
 export type TabType = "all" | TaskStatus;
+
+
+export interface Workspace{
+  workspaceDescription:string,
+  workspaceName:string
+}

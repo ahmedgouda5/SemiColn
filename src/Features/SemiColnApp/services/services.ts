@@ -1,7 +1,9 @@
 import { tasks } from "../data";
-import type { TabType, TaskStatus } from "../type";
+import type { TabType, TaskStatus, Workspace } from "../type";
 import { toast } from "react-toastify";
 import { useUserStore } from "@/store/UserStore";
+import { Second_URL } from "@/shared/services";
+import { useWorkSpaceStore } from "@/store/WorkSpaceStore";
 export const getStatusColor = (status: TaskStatus | undefined): string => {
   switch (status) {
     case "pending":
@@ -41,7 +43,40 @@ export const handelDeleteTask = () => {
 
 export const Logout = () => {
   useUserStore.getState().clearUser();
-  localStorage.removeItem("token");
-  localStorage.removeItem("userId");
   window.location.reload();
+};
+
+
+export const HandleCreateWokSpace = async (data: Workspace) => {
+  const token = useUserStore.getState().token;
+  const Userid = useUserStore.getState().id;
+
+  const response = await fetch(`${Second_URL}/workspaces`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      workspaceName: data.workspaceName,
+      description: data.workspaceDescription,
+      user: Userid,
+    }),
+  });
+
+  const {workspace} = await response.json();
+
+  useWorkSpaceStore
+    .getState()
+    .setWorkspace(
+      workspace.description,
+      workspace.workspaceName,
+      null,
+      workspace._id,
+      workspace.tasks ?? []
+    )
+
+
+    console.log(workspace)
+  return workspace;
 };
