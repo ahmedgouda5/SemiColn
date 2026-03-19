@@ -34,3 +34,13 @@ export interface Workspace{
   workspaceDescription:string,
   workspaceName:string
 }
+
+export interface WorkspaceResponse {
+  _id: string;
+  workspaceName: string;
+  description: string;
+  user: string;
+  tasks: Task[];
+  createdAt?: string;
+  updatedAt?: string;
+}

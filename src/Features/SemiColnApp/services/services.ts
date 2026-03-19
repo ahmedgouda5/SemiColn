@@ -1,5 +1,5 @@
 import { tasks } from "../data";
-import type { TabType, TaskStatus, Workspace } from "../type";
+import type { TabType, TaskStatus, Workspace, WorkspaceResponse } from "../type";
 import { toast } from "react-toastify";
 import { useUserStore } from "@/store/UserStore";
 import { Second_URL } from "@/shared/services";
@@ -39,13 +39,10 @@ export const handelDeleteTask = () => {
   toast.success("Task deleted successfully");
 };
 
-
-
 export const Logout = () => {
   useUserStore.getState().clearUser();
   window.location.reload();
 };
-
 
 export const HandleCreateWokSpace = async (data: Workspace) => {
   const token = useUserStore.getState().token;
@@ -64,7 +61,7 @@ export const HandleCreateWokSpace = async (data: Workspace) => {
     }),
   });
 
-  const {workspace} = await response.json();
+  const { workspace } = await response.json();
 
   useWorkSpaceStore
     .getState()
@@ -73,10 +70,36 @@ export const HandleCreateWokSpace = async (data: Workspace) => {
       workspace.workspaceName,
       null,
       workspace._id,
-      workspace.tasks ?? []
-    )
+      workspace.tasks ?? [],
+    );
 
-
-    console.log(workspace)
+  console.log(workspace);
   return workspace;
+};
+
+export const HandleGetAllWorkSpaces = async (): Promise<WorkspaceResponse[]> => {
+  const token = useUserStore.getState().token;
+
+  const response = await fetch(`${Second_URL}/workspaces`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+  return data.workspaces ?? data ?? [];
+};
+
+export const HandleSelectWorkspace = (workspace: WorkspaceResponse) => {
+  useWorkSpaceStore
+    .getState()
+    .setWorkspace(
+      workspace.description,
+      workspace.workspaceName,
+      null,
+      workspace._id,
+      workspace.tasks ?? []
+    );
 };

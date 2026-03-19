@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { navItems } from "../../type";
 import { useUserStore } from "@/store/UserStore";
+import { useWorkSpaceStore } from "@/store/WorkSpaceStore";
 
 export default function Sidebar() {
   const location = useLocation();
   console.log();
   const navigate = useNavigate();
   const userName = useUserStore((s) => s.userName);
-
-
+  const WorkSpaceName = useWorkSpaceStore((s) => s.workspaceName);
   const initials = userName
     ? userName
         .trim()
@@ -29,7 +29,7 @@ export default function Sidebar() {
       <div className="w-14 bg-blue-600 flex flex-col items-center py-4 gap-6">
         <Avatar className="h-10 w-10 border-2 border-white">
           <AvatarFallback className="bg-white text-blue-600 font-bold">
-          {initials}
+            {initials}
           </AvatarFallback>
         </Avatar>
 
@@ -53,7 +53,7 @@ export default function Sidebar() {
                   "relative flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium transition",
                   isActive
                     ? "text-blue-600 bg-blue-50"
-                    : "text-gray-200 hover:bg-blue-400"
+                    : "text-gray-200 hover:bg-blue-400",
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -65,8 +65,10 @@ export default function Sidebar() {
 
       <div className="hidden md:flex w-44 bg-white dark:bg-gray-900 border-r flex-col">
         <div className="px-6 py-6">
-          <h2 className="font-semibold text-gray-900 dark:text-gray-50">Me & I</h2>
-          <p className="text-sm text-gray-400 ">Emmanuel's Space</p>
+          <h2 className="font-semibold text-gray-900 dark:text-gray-50">
+            Me & I
+          </h2>
+          <p className="text-sm text-gray-400 ">{WorkSpaceName}</p>
         </div>
 
         <nav className="flex-1 px-3 space-y-1">
@@ -82,7 +84,7 @@ export default function Sidebar() {
                   "relative flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium transition",
                   isActive
                     ? "text-blue-600 bg-blue-50"
-                    : "text-gray-500 hover:bg-gray-100"
+                    : "text-gray-500 hover:bg-gray-100",
                 )}
               >
                 {isActive && (

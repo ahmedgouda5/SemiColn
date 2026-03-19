@@ -40,21 +40,19 @@ export const login = async (data: ILogin) => {
     throw new Error(result?.message);
   }
   const user = result?.user;
-  console.log(result);
-  
+
   if (user) {
-    useUserStore.getState().setUser(
-      user.username ?? user.name ?? "",
-      user.email ?? "",
-      user.id ?? "",
-      result.token??""
-    );
+    useUserStore
+      .getState()
+      .setUser(
+        user.username ?? user.name ?? "",
+        user.email ?? "",
+        user.id ?? "",
+        result.token ?? "",
+      );
   }
-
-
 
   toast.success("Login successfully");
 
   return result;
 };
-
