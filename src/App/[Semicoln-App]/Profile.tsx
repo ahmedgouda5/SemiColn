@@ -23,7 +23,6 @@ const Profile = () => {
   const userName = useUserStore((s) => s.userName);
   const email = useUserStore((s) => s.email);
 
-
   const initials = userName
     ? userName
         .trim()
@@ -48,9 +47,7 @@ const Profile = () => {
 
         <div className="relative z-10 flex items-center gap-4 p-6">
           <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center shrink-0">
-            <span className="text-gray-900 font-bold text-lg">
-              {initials}
-            </span>
+            <span className="text-gray-900 font-bold text-lg">{initials}</span>
           </div>
 
           <div>
@@ -148,7 +145,7 @@ const Profile = () => {
                   </span>
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
-                      task.status
+                      task.status,
                     )}`}
                   >
                     {getStatusLabel(task.status)}
@@ -156,7 +153,7 @@ const Profile = () => {
                 </div>
 
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-4 leading-relaxed line-clamp-2">
-                  {task.title}
+                  {task.taskName}
                 </h3>
 
                 <Link

@@ -24,7 +24,13 @@ const WorkspaceList = ({ onCreateNew }: WorkspaceListProps) => {
         const data = await HandleGetAllWorkSpaces();
         setWorkspaces(data);
       } catch (err) {
-        setError("Failed to load workspaces. Please try again.");
+        const message =
+          err instanceof Error ? err.message : "Failed to load workspaces.";
+        setError(
+          message.includes("401")
+            ? "Session expired. Please log in again."
+            : "Failed to load workspaces. Please try again.",
+        );
         console.error(err);
       } finally {
         setLoading(false);
@@ -121,7 +127,7 @@ const WorkspaceList = ({ onCreateNew }: WorkspaceListProps) => {
               <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
                 {ws.workspaceName}
               </h3>
-              <p className="text-gray-500 text-sm line-clamp-2 min-h-[2.5rem]">
+              <p className="text-gray-500 text-sm line-clamp-2 min-h-10">
                 {ws.description || "No description"}
               </p>
               <div className="mt-4 pt-4 border-t border-gray-100">

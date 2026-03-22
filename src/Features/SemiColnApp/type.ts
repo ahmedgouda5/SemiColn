@@ -21,7 +21,8 @@ export type TaskStatus = "pending" | "in-progress" | "completed";
 
 export interface Task {
   id: string;
-  title: string;
+  taskName: string;
+  taskDescription?: string;
   status: TaskStatus;
   startDate: string;
   endDate: string;
@@ -29,10 +30,9 @@ export interface Task {
 
 export type TabType = "all" | TaskStatus;
 
-
-export interface Workspace{
-  workspaceDescription:string,
-  workspaceName:string
+export interface Workspace {
+  workspaceDescription: string;
+  workspaceName: string;
 }
 
 export interface WorkspaceResponse {

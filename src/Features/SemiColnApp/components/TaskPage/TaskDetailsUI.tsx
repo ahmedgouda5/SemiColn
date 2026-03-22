@@ -24,14 +24,14 @@ const TaskDetailUi = ({ id }: { id: string }) => {
           <div className="flex items-center gap-2 text-sm">
             <span className="font-semibold text-gray-800">Tasks</span>
             <span className="text-gray-400">›</span>
-            <span className="text-gray-600">{task?.title}</span>
+            <span className="text-gray-600">{task?.taskName}</span>
           </div>
         </div>
 
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm p-8">
           <div className="flex items-start justify-between mb-6">
             <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 flex-1 pr-4">
-              {task?.title}
+              {task?.taskName}
             </h1>
             <div className="flex flex-col items-end gap-2">
               <span className="text-xs text-gray-500">Date Created</span>
@@ -66,9 +66,9 @@ const TaskDetailUi = ({ id }: { id: string }) => {
             <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
               Work on it Now
             </button>
-           <div>
-            <TaskAddModel typeofAction="Delete"/>
-           </div>
+            <div>
+              <TaskAddModel typeofAction="Delete" />
+            </div>
 
             <div>
               <TaskAddModel typeofAction="edit" />

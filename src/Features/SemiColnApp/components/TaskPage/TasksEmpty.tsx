@@ -19,7 +19,7 @@ function ClipboardIcon() {
         />
       </div>
 
-      <div  
+      <div
         className="absolute bottom-0 right-2 w-24 h-28 rounded-xl shadow-md"
         style={{
           backgroundColor: "#A8B4F8",
@@ -52,39 +52,30 @@ function ClipboardIcon() {
 }
 const TasksEmpty = () => {
   return (
-   <div >
-        <div className="">
-          <h1 className="text-2xl font-bold text-[#1A2255]">
-            Tasks
-          </h1>
-          <p className="text-sm mt-1 text-[#8A91A8]">
-            Your tasks in your space.
+    <div>
+      <div className="">
+        <h1 className="text-2xl font-bold text-[#1A2255]">Tasks</h1>
+        <p className="text-sm mt-1 text-[#8A91A8]">Your tasks in your space.</p>
+      </div>
+
+      <div className="flex items-center justify-center px-6 pt-12">
+        <div className="flex flex-col items-center text-center max-w-xs w-full">
+          <ClipboardIcon />
+
+          <h2 className="text-xl font-semibold mb-2 text-[#1A2255]">
+            No Tasks Yet
+          </h2>
+          <p className="text-sm leading-relaxed mb-8">
+            You have no task created in your workspace yet.
+            <br />
+            Get productive. Create a Task Now.
           </p>
-        </div>
 
-        <div className="flex items-center justify-center px-6 pt-12">
-          <div className="flex flex-col items-center text-center max-w-xs w-full">
-            <ClipboardIcon />
-
-            <h2
-              className="text-xl font-semibold mb-2 text-[#1A2255]"
-            
-            >
-              No Tasks Yet
-            </h2>
-            <p
-              className="text-sm leading-relaxed mb-8"
-            >
-              You have no task created in your workspace yet.
-              <br />
-              Get productive. Create a Task Now.
-            </p>
-
-           <TaskAddModel/>
-          </div>
+          <TaskAddModel typeofAction="create" />
         </div>
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default TasksEmpty
+export default TasksEmpty;
