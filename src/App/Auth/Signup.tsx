@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { signup } from "@/Features/auth/services";
 import type { ISignup } from "@/Features/auth/type";
 import { SignupSchema } from "@/lib/Schema/AuthSchema";
+import FrameAuthImage from "@/assets/images/FrameAuth.png";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +47,7 @@ const Signup = () => {
     <main className="p-2 grid grid-cols-1 md:grid-cols-2 min-h-screen overflow-hidden">
       <section className="h-full hidden md:flex">
         <img
-          src="/src/assets/images/FrameAuth.png"
+          src={FrameAuthImage}
           alt=""
           className="w-full h-full object-cover rounded-lg"
           loading="eager"

@@ -2,6 +2,7 @@ import { useState } from "react";
 import WorkSpaceImage from "../../assets/images/WorkSpace.png";
 import WorkspaceList from "@/Features/SemiColnApp/components/WorkspacePage/WorkspaceList";
 import WorkspaceForm from "@/Features/SemiColnApp/components/WorkspacePage/WorkspaceForm";
+import ErrorBoundary from "@/shared/providers/ErrorBoundary";
 
 type View = "list" | "form";
 
@@ -22,11 +23,13 @@ const CreateWorkSpace = () => {
 
         {/* Right side — toggled content */}
         <section className="p-12 flex flex-col justify-center">
-          {view === "list" ? (
-            <WorkspaceList onCreateNew={() => setView("form")} />
-          ) : (
-            <WorkspaceForm onBack={() => setView("list")} />
-          )}
+          <ErrorBoundary>
+            {view === "list" ? (
+              <WorkspaceList onCreateNew={() => setView("form")} />
+            ) : (
+              <WorkspaceForm onBack={() => setView("list")} />
+            )}
+          </ErrorBoundary>
         </section>
       </div>
     </div>

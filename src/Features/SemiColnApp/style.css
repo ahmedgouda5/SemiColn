@@ -1,5 +1,5 @@
 .card {
-  background-image: url("/src/assets/images/FrameSemicoln.png");
+  background-image: url("../../assets/images/FrameSemicoln.png");
   background-size: cover;
   background-position: center;
 }

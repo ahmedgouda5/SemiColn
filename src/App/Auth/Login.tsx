@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { ILogin } from "@/Features/auth/type";
 import { login } from "@/Features/auth/services";
 import { LoginSchema } from "@/lib/Schema/AuthSchema";
+import FrameAuthImage from "@/assets/images/FrameAuth.png";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -135,7 +136,7 @@ const Login = () => {
       </section>
       <section className="h-full relative hidden md:flex">
         <img
-          src="/src/assets/images/FrameAuth.png"
+          src={FrameAuthImage}
           alt=""
           className="w-full h-full object-cover rounded-lg"
           loading="eager"
