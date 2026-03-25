@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# Semicoln 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Semicoln is a Project Management Web Application inspired by Jira, built to help teams manage workspaces, boards, and tasks in an organized and scalable way.
 
-Currently, two official plugins are available:
+> ⚠️ The project is still under development and new features are being added continuously.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Manage workspaces, boards, and tasks
+- Track task status and workflow
+- Assign tasks to developers (in progress)
+- Authentication system (JWT-based)
+- Responsive design (mobile, tablet, desktop)
+- Reusable and scalable UI components
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Frontend
+- React
+- TypeScript
+- Vite
+- Zustand
+- React Hook Form + Zod
+- React Router
+- Axios
+- Tailwind CSS
+- shadcn/ui
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Backend
+- Node.js
+- Express
+- TypeScript
+- MongoDB + Mongoose
+- JWT
+- bcrypt
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Project Structure
+src/
+├─ features/
+│ ├─ auth/
+│ │ ├─ components/
+│ │ ├─ hooks/
+│ │ ├─ services.ts
+│ │ ├─ types.ts
+│ │ └─ index.ts
+│ │
+│ ├─ tasks/
+│ │ ├─ components/
+│ │ ├─ hooks/
+│ │ ├─ api.ts
+│ │ ├─ types.ts
+│ │ └─ index.ts
+│
+├─ shared/
+│ ├─ components/
+│ ├─ hooks/
+│ ├─ ui/
+│ └─ utils/
+│
+├─ pages/
+├─ store/
+├─ assets/
+└─ styles/
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🏗️ Architecture
+
+The project follows a feature-based architecture where each feature is isolated with its own components, hooks, services, and types.  
+This makes the application easier to scale, maintain, and extend.
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ahmedgouda5/SemiColn.git
