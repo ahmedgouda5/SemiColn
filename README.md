@@ -20,6 +20,7 @@ Semicoln is a Project Management Web Application inspired by Jira, built to help
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React
 - TypeScript
 - Vite
@@ -31,6 +32,7 @@ Semicoln is a Project Management Web Application inspired by Jira, built to help
 - shadcn/ui
 
 ### Backend
+
 - Node.js
 - Express
 - TypeScript
@@ -41,39 +43,41 @@ Semicoln is a Project Management Web Application inspired by Jira, built to help
 ---
 
 ## 📂 Project Structure
-src/
-├─ features/
-│ ├─ auth/
-│ │ ├─ components/
-│ │ ├─ hooks/
-│ │ ├─ services.ts
-│ │ ├─ types.ts
-│ │ └─ index.ts
-│ │
-│ ├─ tasks/
-│ │ ├─ components/
-│ │ ├─ hooks/
-│ │ ├─ api.ts
-│ │ ├─ types.ts
-│ │ └─ index.ts
-│
-├─ shared/
-│ ├─ components/
-│ ├─ hooks/
-│ ├─ ui/
-│ └─ utils/
-│
-├─ pages/
-├─ store/
-├─ assets/
-└─ styles/
 
+```
+src/
+├── features/
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services.ts
+│   │   ├── types.ts
+│   │   └── index.ts
+│   │
+│   └── tasks/
+│       ├── components/
+│       ├── hooks/
+│       ├── api.ts
+│       ├── types.ts
+│       └── index.ts
+│
+├── shared/
+│   ├── components/
+│   ├── hooks/
+│   ├── ui/
+│   └── utils/
+│
+├── pages/
+├── store/
+├── assets/
+└── styles/
+```
 
 ---
 
 ## 🏗️ Architecture
 
-The project follows a feature-based architecture where each feature is isolated with its own components, hooks, services, and types.  
+The project follows a **feature-based architecture** where each feature is isolated with its own components, hooks, services, and types.  
 This makes the application easier to scale, maintain, and extend.
 
 ---
@@ -84,3 +88,36 @@ This makes the application easier to scale, maintain, and extend.
 
 ```bash
 git clone https://github.com/ahmedgouda5/SemiColn.git
+cd SemiColn
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+## 👨‍💻 Author
+
+**Ahmed Gouda**  
+GitHub: [@ahmedgouda5](https://github.com/ahmedgouda5)
