@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "@/store/UserStore";
-import { tasks } from "../../Features/SemiColnApp/data";
 import {
   getStatusColor,
   getStatusLabel,
+  HandleGetAllTasks,
 } from "../../Features/SemiColnApp/services/services";
-import type { TaskStatus } from "../../Features/SemiColnApp/type";
+import type { Task, TaskStatus } from "../../Features/SemiColnApp/type";
 
 type FilterOption = "all" | TaskStatus;
 
@@ -20,21 +20,53 @@ const filterOptions: { label: string; value: FilterOption }[] = [
 const Profile = () => {
   const [filter, setFilter] = useState<FilterOption>("all");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [apiTasks, setApiTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const userName = useUserStore((s) => s.userName);
   const email = useUserStore((s) => s.email);
 
-  const initials = userName
-    ? userName
-        .trim()
-        .split(/\s+/)
-        .map((w) => w[0])
-        .join("")
-        .toUpperCase()
-        .slice(0, 2)
-    : "?";
+  const initials = useMemo(() => {
+    if (!userName) return "?";
+    return userName
+      .trim()
+      .split(/\s+/)
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  }, [userName]);
 
-  const filteredTasks =
-    filter === "all" ? tasks : tasks.filter((t) => t.status === filter);
+  const fetchTasks = async () => {
+    try {
+      setError(null);
+      const data = await HandleGetAllTasks();
+      setApiTasks(data);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to load tasks.";
+      setError(
+        message.includes("401")
+          ? "Session expired. Please log in again."
+          : "Failed to load tasks. Please try again.",
+      );
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const filteredTasks = useMemo(
+    () =>
+      filter === "all"
+        ? apiTasks
+        : apiTasks.filter((t) => t.status === filter),
+    [apiTasks, filter],
+  );
 
   const activeLabel =
     filterOptions.find((o) => o.value === filter)?.label ?? "Filter Items";
@@ -128,7 +160,21 @@ const Profile = () => {
         </div>
 
         {/* Task Cards Grid */}
-        {filteredTasks.length === 0 ? (
+        {loading ? (
+          <p className="text-gray-400 text-sm text-center py-16">
+            Loading tasks...
+          </p>
+        ) : error ? (
+          <div className="text-center py-16">
+            <p className="text-red-500 text-sm mb-3">{error}</p>
+            <button
+              onClick={fetchTasks}
+              className="text-indigo-600 hover:underline text-sm font-medium"
+            >
+              Retry
+            </button>
+          </div>
+        ) : filteredTasks.length === 0 ? (
           <p className="text-gray-400 text-sm text-center py-16">
             No tasks found.
           </p>

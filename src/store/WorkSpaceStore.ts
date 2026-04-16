@@ -15,6 +15,7 @@ interface WorkSpaceState {
     _id: string | null,
     tasks?: Task[]
   ) => void;
+  setTasks: (tasks: Task[]) => void;
   clearWorkspace: () => void;
 }
 
@@ -32,6 +33,7 @@ export const useWorkSpaceStore = create<WorkSpaceState>()(
       ...initialState,
       setWorkspace: (description, workspaceName, id, _id, tasks = []) =>
         set({ description, workspaceName, id, _id, tasks }),
+      setTasks: (tasks) => set({ tasks }),
       clearWorkspace: () => set(initialState),
     }),
     {
@@ -39,7 +41,7 @@ export const useWorkSpaceStore = create<WorkSpaceState>()(
       partialize: (state) => ({
         description: state.description,
         workspaceName: state.workspaceName,
-        WorkspaceIDd: state._id,
+        _id: state._id,
         tasks: state.tasks,
       }),
     }

@@ -1,9 +1,10 @@
 export type UploadState = "empty" | "preview" | "saved";
-import { Home, CheckSquare, Settings } from "lucide-react";
+import { Home, CheckSquare, Settings, MessageCircle } from "lucide-react";
 
 export const navItems = [
   { icon: Home, label: "overview", path: "/Semicoln/app" },
   { icon: CheckSquare, label: "tasks", path: "/Semicoln/tasks" },
+  { icon: MessageCircle, label: "chat", path: "/Semicoln/chat" },
   { icon: Settings, label: "settings", path: "/Semicoln/settings" },
 ];
 
@@ -20,7 +21,9 @@ export const calendarDays = [
 export type TaskStatus = "pending" | "in-progress" | "completed";
 
 export interface Task {
-  id: string;
+  id?: string;
+  _id?: string;
+  workspace?: string;
   taskName: string;
   taskDescription?: string;
   status: TaskStatus;

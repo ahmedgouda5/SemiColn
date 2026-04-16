@@ -130,12 +130,6 @@ const WorkspaceList = ({ onCreateNew }: WorkspaceListProps) => {
               <p className="text-gray-500 text-sm line-clamp-2 min-h-10">
                 {ws.description || "No description"}
               </p>
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <span className="text-xs font-medium text-gray-400">
-                  {ws.tasks?.length ?? 0}{" "}
-                  {ws.tasks?.length === 1 ? "task" : "tasks"}
-                </span>
-              </div>
             </button>
           ))}
         </div>

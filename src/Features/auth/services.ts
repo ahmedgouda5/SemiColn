@@ -40,16 +40,20 @@ export const login = async (data: ILogin) => {
     throw new Error(result?.message);
   }
   const user = result?.user;
+  const token = result?.token ?? result?.accessToken ?? result?.access_token;
+  const userId = user?._id ?? user?.id ?? "";
 
-  if (user) {
+  if (user && token) {
     useUserStore
       .getState()
       .setUser(
         user.username ?? user.name ?? "",
         user.email ?? "",
-        user.id ?? "",
-        result.token ?? "",
+        userId,
+        token,
       );
+  } else {
+    throw new Error("Login response is missing authentication data");
   }
 
   toast.success("Login successfully");

@@ -8,6 +8,7 @@ import {
 import TaskAddModel from "./TaskAddModel";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import TasksEmpty from "./TasksEmpty";
 
 const TasksLayout: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("all");
@@ -15,25 +16,27 @@ const TasksLayout: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const data = await HandleGetAllTasks();
-        setApiTasks(data);
-      } catch (err) {
-        const message =
-          err instanceof Error ? err.message : "Failed to load tasks.";
-        setError(
-          message.includes("401")
-            ? "Session expired. Please log in again."
-            : "Failed to load tasks. Please try again.",
-        );
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchTasks = async () => {
+    try {
+      setError(null);
+      const data = await HandleGetAllTasks();
+      console.log("data", data);
+      setApiTasks(data);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to load tasks.";
+      setError(
+        message.includes("401")
+          ? "Session expired. Please log in again."
+          : "Failed to load tasks. Please try again.",
+      );
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchTasks();
   }, []);
 
@@ -93,7 +96,7 @@ const TasksLayout: React.FC = () => {
             </div>
 
             <div>
-              <TaskAddModel typeofAction="create" />
+              <TaskAddModel typeofAction="create" onTaskAdd={fetchTasks} />
             </div>
           </div>
         </div>
@@ -109,12 +112,14 @@ const TasksLayout: React.FC = () => {
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <p className="text-red-500 mb-4">{error}</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={fetchTasks}
               className="text-indigo-600 hover:underline text-sm font-medium"
             >
               Retry
             </button>
           </div>
+        ) : apiTasks.length === 0 ? (
+          <TasksEmpty onTaskAdd={fetchTasks} />
         ) : filteredTasks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <p className="text-gray-500 text-sm">No tasks found.</p>

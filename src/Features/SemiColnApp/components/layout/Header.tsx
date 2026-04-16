@@ -1,7 +1,8 @@
-import { Search } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Bell } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -16,12 +17,14 @@ const Header = () => {
               />
             </div>
           </div>
-          <Button  size="icon" className="relative">
-          <Bell className="text-primary-Blue size-7"/>
-        </Button>
+          <Button asChild size="icon" className="relative">
+            <Link to="/Semicoln/notifications" aria-label="Notifications">
+              <Bell className="text-primary-Blue size-7" />
+            </Link>
+          </Button>
         </div>
       </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

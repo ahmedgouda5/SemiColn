@@ -50,7 +50,7 @@ function ClipboardIcon() {
     </div>
   );
 }
-const TasksEmpty = () => {
+const TasksEmpty = ({ onTaskAdd }: { onTaskAdd?: () => void | Promise<void> }) => {
   return (
     <div>
       <div className="">
@@ -71,7 +71,7 @@ const TasksEmpty = () => {
             Get productive. Create a Task Now.
           </p>
 
-          <TaskAddModel typeofAction="create" />
+          <TaskAddModel typeofAction="create" onTaskAdd={onTaskAdd} />
         </div>
       </div>
     </div>
