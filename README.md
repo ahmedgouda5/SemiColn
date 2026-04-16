@@ -40,8 +40,6 @@
 - [Contributing](#-contributing)
 - [License](#-license)
 
----
-
 ## 🌟 Overview
 
 **Semicoln** is a full-stack Task Management System built with **React 19 + Vite** on the frontend and **Node.js + Express** on the backend. The UI is implemented pixel-perfect from the [Figma Community design file](https://www.figma.com/design/Szc4ZlQUXsoDPO4YqGXIHK/Task-Management-System--Community-?node-id=0-1&t=VByhwhK5OjffOzS4-1), featuring a Kanban board, list view, calendar, team management, and a rich dashboard — all within a clean, accessible, dark/light-mode-ready interface.
@@ -62,19 +60,18 @@ Routing   →  React Router DOM v7
 
 All UI screens, components, layout grids, color tokens, and typography are sourced from the official Figma Community file.
 
-| Resource | Link |
-|---|---|
+| Resource             | Link                                                                                                                                     |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | 🖼 Figma Design File | [Open in Figma](https://www.figma.com/design/Szc4ZlQUXsoDPO4YqGXIHK/Task-Management-System--Community-?node-id=0-1&t=VByhwhK5OjffOzS4-1) |
-| 🎨 Design Tokens | Colors, spacing, radius, and typography documented in [Design System](#-design-system) |
-| 🧩 Components | All reusable UI elements are in the Figma file's component page |
+| 🎨 Design Tokens     | Colors, spacing, radius, and typography documented in [Design System](#-design-system)                                                   |
+| 🧩 Components        | All reusable UI elements are in the Figma file's component page                                                                          |
 
 > **Contributor Note:** Any UI change must match the Figma specification exactly — use the Inspect panel for spacing, font sizes, and color tokens before submitting a PR.
-
----
 
 ## ✨ Features
 
 ### 🗂 Task & Project Management
+
 - **Create, edit, delete tasks** with title, description, due date, priority, and assignees
 - **Multi-project workspaces** — organize tasks under separate projects
 - **Task priorities** — Urgent, High, Medium, Low with visual color indicators
@@ -82,88 +79,91 @@ All UI screens, components, layout grids, color tokens, and typography are sourc
 - **Rich task detail** — full description, attachments, due date picker, and metadata
 
 ### 📊 Multiple Views
+
 - **Kanban Board** — drag-and-drop task cards across status columns
 - **List View** — sortable, filterable tabular view of all tasks
 - **Calendar View** — monthly calendar visualization of deadlines using `react-day-picker`
 - **Dashboard** — summary stats cards, progress charts, and activity feed
 
 ### 👥 Team Collaboration
+
 - **Team Management** — invite members, assign project roles (Admin · Member · Viewer)
 - **Task Assignment** — assign one or multiple team members per task
 - **Comments & Mentions** — inline discussion with `@mention` support
 - **Activity Log** — full audit trail per task and project
 
 ### 🔔 Notifications
+
 - In-app notification center with unread badge count
 - Deadline reminder alerts
 - Assignment and mention notifications via `react-toastify`
 
 ### 🎨 UI/UX
+
 - **Dark / Light Mode** — system-aware theme switching via `next-themes`
 - **Fully Responsive** — mobile, tablet, and desktop layouts
 - **Accessible** — built on Radix UI primitives and shadcn/ui components
 - **Smooth Animations** — powered by `tw-animate-css`
 
 ### 🔐 Authentication & Authorization
+
 - Supabase Auth — email/password and OAuth providers
 - Protected routes via React Router DOM v7 guards
 - Role-based access control (RBAC) per project
-
----
 
 ## 🛠 Tech Stack
 
 ### Frontend
 
-| Package | Version | Purpose |
-|---|---|---|
-| [React](https://react.dev/) | `^19.2.4` | UI component library |
-| [Vite](https://vitejs.dev/) | `^7.3.1` | Build tool & lightning-fast dev server |
-| [TypeScript](https://www.typescriptlang.org/) | `~5.9.3` | Static type safety |
-| [React Router DOM](https://reactrouter.com/) | `^7.13.0` | Client-side routing |
-| [Tailwind CSS](https://tailwindcss.com/) | `^4.1.18` | Utility-first CSS framework |
-| [shadcn/ui](https://ui.shadcn.com/) | `^3.8.4` | Accessible component system |
-| [Radix UI](https://www.radix-ui.com/) | `^1.4.3` | Headless accessible UI primitives |
-| [class-variance-authority](https://cva.style/docs) | `^0.7.1` | Component variant management |
-| [clsx](https://github.com/lukeed/clsx) | `^2.1.1` | Conditional className utility |
-| [tailwind-merge](https://github.com/dcastil/tailwind-merge) | `^3.4.0` | Tailwind class conflict resolver |
-| [tw-animate-css](https://github.com/new-divos/tw-animate-css) | `^1.4.0` | Tailwind animation utilities |
-| [Zustand](https://zustand-demo.pmnd.rs/) | `^5.0.11` | Lightweight global state management |
-| [React Hook Form](https://react-hook-form.com/) | `^7.71.1` | Performant, flexible form handling |
-| [Zod](https://zod.dev/) | `^4.3.6` | TypeScript-first schema validation |
-| [@hookform/resolvers](https://github.com/react-hook-form/resolvers) | `^5.2.2` | Zod ↔ React Hook Form adapter |
-| [Supabase JS](https://supabase.com/docs/reference/javascript) | `^2.95.3` | Database, auth, and storage client |
-| [Axios](https://axios-http.com/) | `^1.13.5` | HTTP client for the Express API |
-| [date-fns](https://date-fns.org/) | `^4.1.0` | Date formatting & manipulation |
-| [react-day-picker](https://react-day-picker.js.org/) | `^9.13.2` | Calendar / date picker component |
-| [Lucide React](https://lucide.dev/) | `^0.563.0` | Clean, consistent icon set |
-| [react-icons](https://react-icons.github.io/react-icons/) | `^5.5.0` | Extended multi-library icon collection |
-| [react-toastify](https://fkhadra.github.io/react-toastify/) | `^11.0.5` | Toast notification system |
-| [next-themes](https://github.com/pacocoursey/next-themes) | `^0.4.6` | Dark / light theme management |
+| Package                                                             | Version    | Purpose                                |
+| ------------------------------------------------------------------- | ---------- | -------------------------------------- |
+| [React](https://react.dev/)                                         | `^19.2.4`  | UI component library                   |
+| [Vite](https://vitejs.dev/)                                         | `^7.3.1`   | Build tool & lightning-fast dev server |
+| [TypeScript](https://www.typescriptlang.org/)                       | `~5.9.3`   | Static type safety                     |
+| [React Router DOM](https://reactrouter.com/)                        | `^7.13.0`  | Client-side routing                    |
+| [Tailwind CSS](https://tailwindcss.com/)                            | `^4.1.18`  | Utility-first CSS framework            |
+| [shadcn/ui](https://ui.shadcn.com/)                                 | `^3.8.4`   | Accessible component system            |
+| [Radix UI](https://www.radix-ui.com/)                               | `^1.4.3`   | Headless accessible UI primitives      |
+| [class-variance-authority](https://cva.style/docs)                  | `^0.7.1`   | Component variant management           |
+| [clsx](https://github.com/lukeed/clsx)                              | `^2.1.1`   | Conditional className utility          |
+| [tailwind-merge](https://github.com/dcastil/tailwind-merge)         | `^3.4.0`   | Tailwind class conflict resolver       |
+| [tw-animate-css](https://github.com/new-divos/tw-animate-css)       | `^1.4.0`   | Tailwind animation utilities           |
+| [Zustand](https://zustand-demo.pmnd.rs/)                            | `^5.0.11`  | Lightweight global state management    |
+| [React Hook Form](https://react-hook-form.com/)                     | `^7.71.1`  | Performant, flexible form handling     |
+| [Zod](https://zod.dev/)                                             | `^4.3.6`   | TypeScript-first schema validation     |
+| [@hookform/resolvers](https://github.com/react-hook-form/resolvers) | `^5.2.2`   | Zod ↔ React Hook Form adapter          |
+| [Supabase JS](https://supabase.com/docs/reference/javascript)       | `^2.95.3`  | Database, auth, and storage client     |
+| [Axios](https://axios-http.com/)                                    | `^1.13.5`  | HTTP client for the Express API        |
+| [date-fns](https://date-fns.org/)                                   | `^4.1.0`   | Date formatting & manipulation         |
+| [react-day-picker](https://react-day-picker.js.org/)                | `^9.13.2`  | Calendar / date picker component       |
+| [Lucide React](https://lucide.dev/)                                 | `^0.563.0` | Clean, consistent icon set             |
+| [react-icons](https://react-icons.github.io/react-icons/)           | `^5.5.0`   | Extended multi-library icon collection |
+| [react-toastify](https://fkhadra.github.io/react-toastify/)         | `^11.0.5`  | Toast notification system              |
+| [next-themes](https://github.com/pacocoursey/next-themes)           | `^0.4.6`   | Dark / light theme management          |
 
 ### Backend
 
-| Package | Version | Purpose |
-|---|---|---|
-| [Node.js](https://nodejs.org/) | `^20.x LTS` | JavaScript runtime |
-| [Express](https://expressjs.com/) | `^4.x` | REST API framework |
-| [TypeScript](https://www.typescriptlang.org/) | `~5.x` | Static type safety |
-| [Supabase](https://supabase.com/) | — | PostgreSQL database + Auth provider |
-| [Zod](https://zod.dev/) | `^4.x` | Request body validation |
-| [JWT](https://jwt.io/) | — | Custom token handling |
-| [bcrypt](https://github.com/kelektiv/node.bcrypt.js) | — | Password hashing |
-| [CORS](https://github.com/expressjs/cors) | — | Cross-origin request handling |
-| [dotenv](https://github.com/motdotla/dotenv) | — | Environment variable loading |
-| [Nodemailer](https://nodemailer.com/) | — | Email notification delivery |
+| Package                                              | Version     | Purpose                             |
+| ---------------------------------------------------- | ----------- | ----------------------------------- |
+| [Node.js](https://nodejs.org/)                       | `^20.x LTS` | JavaScript runtime                  |
+| [Express](https://expressjs.com/)                    | `^4.x`      | REST API framework                  |
+| [TypeScript](https://www.typescriptlang.org/)        | `~5.x`      | Static type safety                  |
+| [Supabase](https://supabase.com/)                    | —           | PostgreSQL database + Auth provider |
+| [Zod](https://zod.dev/)                              | `^4.x`      | Request body validation             |
+| [JWT](https://jwt.io/)                               | —           | Custom token handling               |
+| [bcrypt](https://github.com/kelektiv/node.bcrypt.js) | —           | Password hashing                    |
+| [CORS](https://github.com/expressjs/cors)            | —           | Cross-origin request handling       |
+| [dotenv](https://github.com/motdotla/dotenv)         | —           | Environment variable loading        |
+| [Nodemailer](https://nodemailer.com/)                | —           | Email notification delivery         |
 
 ### DevOps & Tooling
 
-| Tool | Purpose |
-|---|---|
-| ESLint + Prettier | Code linting and auto-formatting |
-| Husky + lint-staged | Pre-commit quality gates |
-| GitHub Actions | CI/CD pipeline (lint, test, build) |
-| Docker Compose | Containerized local development |
+| Tool                | Purpose                            |
+| ------------------- | ---------------------------------- |
+| ESLint + Prettier   | Code linting and auto-formatting   |
+| Husky + lint-staged | Pre-commit quality gates           |
+| GitHub Actions      | CI/CD pipeline (lint, test, build) |
+| Docker Compose      | Containerized local development    |
 
 ---
 
@@ -290,20 +290,16 @@ semicoln/
 └── README.md
 ```
 
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-| Tool | Version | Download |
-|---|---|---|
-| Node.js | `>= 20.x LTS` | [nodejs.org](https://nodejs.org/) |
-| npm | `>= 10.x` | Bundled with Node.js |
-| Git | Latest | [git-scm.com](https://git-scm.com/) |
-| Supabase Account | — | [supabase.com](https://supabase.com/) |
-
----
+| Tool             | Version       | Download                              |
+| ---------------- | ------------- | ------------------------------------- |
+| Node.js          | `>= 20.x LTS` | [nodejs.org](https://nodejs.org/)     |
+| npm              | `>= 10.x`     | Bundled with Node.js                  |
+| Git              | Latest        | [git-scm.com](https://git-scm.com/)   |
+| Supabase Account | —             | [supabase.com](https://supabase.com/) |
 
 ### 1. Clone the Repository
 
@@ -414,72 +410,69 @@ SMTP_FROM="Task Manager <noreply@example.com>"
 
 > ⚠️ Never commit `.env` or `.env.local` files. Both are included in `.gitignore`.
 
----
-
 ## 📡 API Reference
 
 **Base URL:** `http://localhost:5000/api`
 
 All protected endpoints require:
+
 ```
 Authorization: Bearer <jwt_token>
 ```
 
 ### 🔑 Authentication
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `POST` | `/auth/register` | ❌ | Register new user |
-| `POST` | `/auth/login` | ❌ | Login, receive JWT |
-| `POST` | `/auth/logout` | ✅ | Invalidate session |
-| `GET` | `/auth/me` | ✅ | Get current user |
-| `PATCH` | `/auth/password` | ✅ | Update password |
+| Method  | Endpoint         | Auth | Description        |
+| ------- | ---------------- | ---- | ------------------ |
+| `POST`  | `/auth/register` | ❌   | Register new user  |
+| `POST`  | `/auth/login`    | ❌   | Login, receive JWT |
+| `POST`  | `/auth/logout`   | ✅   | Invalidate session |
+| `GET`   | `/auth/me`       | ✅   | Get current user   |
+| `PATCH` | `/auth/password` | ✅   | Update password    |
 
 ### 📁 Projects
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/projects` | ✅ | List user's projects |
-| `POST` | `/projects` | ✅ | Create project |
-| `GET` | `/projects/:id` | ✅ | Get project detail |
-| `PATCH` | `/projects/:id` | ✅ | Update project |
-| `DELETE` | `/projects/:id` | ✅ | Delete project |
-| `GET` | `/projects/:id/members` | ✅ | List members |
-| `POST` | `/projects/:id/members` | ✅ | Invite member |
-| `DELETE` | `/projects/:id/members/:uid` | ✅ | Remove member |
+| Method   | Endpoint                     | Auth | Description          |
+| -------- | ---------------------------- | ---- | -------------------- |
+| `GET`    | `/projects`                  | ✅   | List user's projects |
+| `POST`   | `/projects`                  | ✅   | Create project       |
+| `GET`    | `/projects/:id`              | ✅   | Get project detail   |
+| `PATCH`  | `/projects/:id`              | ✅   | Update project       |
+| `DELETE` | `/projects/:id`              | ✅   | Delete project       |
+| `GET`    | `/projects/:id/members`      | ✅   | List members         |
+| `POST`   | `/projects/:id/members`      | ✅   | Invite member        |
+| `DELETE` | `/projects/:id/members/:uid` | ✅   | Remove member        |
 
 ### ✅ Tasks
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/projects/:id/tasks` | ✅ | List project tasks |
-| `POST` | `/projects/:id/tasks` | ✅ | Create task |
-| `GET` | `/tasks/:id` | ✅ | Get task detail |
-| `PATCH` | `/tasks/:id` | ✅ | Update task |
-| `DELETE` | `/tasks/:id` | ✅ | Delete task |
-| `PATCH` | `/tasks/:id/status` | ✅ | Change task status |
-| `PATCH` | `/tasks/:id/assign` | ✅ | Assign / unassign members |
-| `GET` | `/tasks/:id/comments` | ✅ | List comments |
-| `POST` | `/tasks/:id/comments` | ✅ | Add comment |
+| Method   | Endpoint              | Auth | Description               |
+| -------- | --------------------- | ---- | ------------------------- |
+| `GET`    | `/projects/:id/tasks` | ✅   | List project tasks        |
+| `POST`   | `/projects/:id/tasks` | ✅   | Create task               |
+| `GET`    | `/tasks/:id`          | ✅   | Get task detail           |
+| `PATCH`  | `/tasks/:id`          | ✅   | Update task               |
+| `DELETE` | `/tasks/:id`          | ✅   | Delete task               |
+| `PATCH`  | `/tasks/:id/status`   | ✅   | Change task status        |
+| `PATCH`  | `/tasks/:id/assign`   | ✅   | Assign / unassign members |
+| `GET`    | `/tasks/:id/comments` | ✅   | List comments             |
+| `POST`   | `/tasks/:id/comments` | ✅   | Add comment               |
 
 ### 👤 Users
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/users/profile` | ✅ | Get profile |
-| `PATCH` | `/users/profile` | ✅ | Update profile |
-| `POST` | `/users/avatar` | ✅ | Upload avatar |
+| Method  | Endpoint         | Auth | Description    |
+| ------- | ---------------- | ---- | -------------- |
+| `GET`   | `/users/profile` | ✅   | Get profile    |
+| `PATCH` | `/users/profile` | ✅   | Update profile |
+| `POST`  | `/users/avatar`  | ✅   | Upload avatar  |
 
 ### 🔔 Notifications
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/notifications` | ✅ | Get all notifications |
-| `PATCH` | `/notifications/:id/read` | ✅ | Mark as read |
-| `PATCH` | `/notifications/read-all` | ✅ | Mark all as read |
-| `DELETE` | `/notifications/clear` | ✅ | Clear all |
-
----
+| Method   | Endpoint                  | Auth | Description           |
+| -------- | ------------------------- | ---- | --------------------- |
+| `GET`    | `/notifications`          | ✅   | Get all notifications |
+| `PATCH`  | `/notifications/:id/read` | ✅   | Mark as read          |
+| `PATCH`  | `/notifications/read-all` | ✅   | Mark all as read      |
+| `DELETE` | `/notifications/clear`    | ✅   | Clear all             |
 
 ## 🎨 Design System
 
@@ -487,62 +480,62 @@ All tokens are extracted from the [Figma Community File](https://www.figma.com/d
 
 ### Color Palette
 
-| Token | Hex | Usage |
-|---|---|---|
-| `--color-primary` | `#7C3AED` | Primary actions, active nav, CTAs |
-| `--color-primary-hover` | `#6D28D9` | Hover on primary elements |
-| `--color-accent` | `#A78BFA` | Highlights, focus rings |
-| `--color-success` | `#22C55E` | Done status, success states |
-| `--color-warning` | `#F59E0B` | In Review status, warnings |
-| `--color-danger` | `#EF4444` | Urgent priority, delete actions |
-| `--color-info` | `#3B82F6` | In Progress status, info states |
-| `--color-text-primary` | `#0F172A` | Main body text (light mode) |
-| `--color-text-secondary` | `#64748B` | Muted / helper text |
-| `--color-border` | `#E2E8F0` | Input borders, dividers |
-| `--color-bg` | `#FFFFFF` | Page background (light) |
-| `--color-bg-dark` | `#0F0C29` | Page background (dark) |
-| `--color-surface` | `#F8FAFC` | Card surface (light) |
-| `--color-surface-dark` | `#1E1B4B` | Card surface (dark) |
+| Token                    | Hex       | Usage                             |
+| ------------------------ | --------- | --------------------------------- |
+| `--color-primary`        | `#7C3AED` | Primary actions, active nav, CTAs |
+| `--color-primary-hover`  | `#6D28D9` | Hover on primary elements         |
+| `--color-accent`         | `#A78BFA` | Highlights, focus rings           |
+| `--color-success`        | `#22C55E` | Done status, success states       |
+| `--color-warning`        | `#F59E0B` | In Review status, warnings        |
+| `--color-danger`         | `#EF4444` | Urgent priority, delete actions   |
+| `--color-info`           | `#3B82F6` | In Progress status, info states   |
+| `--color-text-primary`   | `#0F172A` | Main body text (light mode)       |
+| `--color-text-secondary` | `#64748B` | Muted / helper text               |
+| `--color-border`         | `#E2E8F0` | Input borders, dividers           |
+| `--color-bg`             | `#FFFFFF` | Page background (light)           |
+| `--color-bg-dark`        | `#0F0C29` | Page background (dark)            |
+| `--color-surface`        | `#F8FAFC` | Card surface (light)              |
+| `--color-surface-dark`   | `#1E1B4B` | Card surface (dark)               |
 
 ### Task Priority
 
-| Priority | Badge Color | Hex |
-|---|---|---|
-| 🔴 Urgent | Red | `#EF4444` |
-| 🟠 High | Orange | `#F97316` |
-| 🟡 Medium | Yellow | `#EAB308` |
-| 🟢 Low | Green | `#22C55E` |
+| Priority  | Badge Color | Hex       |
+| --------- | ----------- | --------- |
+| 🔴 Urgent | Red         | `#EF4444` |
+| 🟠 High   | Orange      | `#F97316` |
+| 🟡 Medium | Yellow      | `#EAB308` |
+| 🟢 Low    | Green       | `#22C55E` |
 
 ### Task Status
 
-| Status | Badge Color | Hex |
-|---|---|---|
-| ⬜ To Do | Slate | `#94A3B8` |
-| 🔵 In Progress | Blue | `#3B82F6` |
-| 🟡 In Review | Amber | `#F59E0B` |
-| ✅ Done | Green | `#22C55E` |
+| Status         | Badge Color | Hex       |
+| -------------- | ----------- | --------- |
+| ⬜ To Do       | Slate       | `#94A3B8` |
+| 🔵 In Progress | Blue        | `#3B82F6` |
+| 🟡 In Review   | Amber       | `#F59E0B` |
+| ✅ Done        | Green       | `#22C55E` |
 
 ### Typography
 
-| Style | Size | Weight | Usage |
-|---|---|---|---|
-| Page Title | `24px` | `700` | Screen headings |
-| Section Heading | `18px` | `600` | Section titles |
-| Card Title | `14px` | `600` | Task / card names |
-| Body | `14px` | `400` | General content |
-| Caption | `12px` | `400` | Labels, timestamps |
-| Button | `14px` | `500` | CTA labels |
+| Style           | Size   | Weight | Usage              |
+| --------------- | ------ | ------ | ------------------ |
+| Page Title      | `24px` | `700`  | Screen headings    |
+| Section Heading | `18px` | `600`  | Section titles     |
+| Card Title      | `14px` | `600`  | Task / card names  |
+| Body            | `14px` | `400`  | General content    |
+| Caption         | `12px` | `400`  | Labels, timestamps |
+| Button          | `14px` | `500`  | CTA labels         |
 
 ### Spacing Scale
 
 ```css
---spacing-1:   4px;
---spacing-2:   8px;
---spacing-3:  12px;
---spacing-4:  16px;
---spacing-5:  20px;
---spacing-6:  24px;
---spacing-8:  32px;
+--spacing-1: 4px;
+--spacing-2: 8px;
+--spacing-3: 12px;
+--spacing-4: 16px;
+--spacing-5: 20px;
+--spacing-6: 24px;
+--spacing-8: 32px;
 --spacing-10: 40px;
 --spacing-12: 48px;
 --spacing-16: 64px;
@@ -551,32 +544,28 @@ All tokens are extracted from the [Figma Community File](https://www.figma.com/d
 ### Border Radius
 
 ```css
---radius-sm:   4px;      /* Tags, badges */
---radius-md:   8px;      /* Inputs, buttons, cards */
---radius-lg:  12px;      /* Modals, dropdowns */
---radius-xl:  16px;      /* Side panels */
---radius-full: 9999px;   /* Avatars, pill chips */
+--radius-sm: 4px; /* Tags, badges */
+--radius-md: 8px; /* Inputs, buttons, cards */
+--radius-lg: 12px; /* Modals, dropdowns */
+--radius-xl: 16px; /* Side panels */
+--radius-full: 9999px; /* Avatars, pill chips */
 ```
-
----
 
 ## 🖥 Screens & Pages
 
-| Screen | Route | Description |
-|---|---|---|
-| **Login** | `/login` | User sign-in with Supabase Auth |
-| **Register** | `/register` | New account creation |
-| **Dashboard** | `/dashboard` | Summary stats, charts, activity feed |
-| **Projects** | `/projects` | All workspaces with progress overview |
-| **Kanban Board** | `/projects/:id/board` | Drag-and-drop status columns |
-| **List View** | `/projects/:id/list` | Filterable & sortable task table |
-| **Calendar** | `/projects/:id/calendar` | Monthly deadline visualization |
-| **Task Detail** | `/tasks/:id` | Full task info, comments, activity |
-| **Team** | `/team` | Members, roles, invitations |
-| **Notifications** | `/notifications` | Notification center |
-| **Settings** | `/settings` | Profile, workspace, preferences |
-
----
+| Screen            | Route                    | Description                           |
+| ----------------- | ------------------------ | ------------------------------------- |
+| **Login**         | `/login`                 | User sign-in with Supabase Auth       |
+| **Register**      | `/register`              | New account creation                  |
+| **Dashboard**     | `/dashboard`             | Summary stats, charts, activity feed  |
+| **Projects**      | `/projects`              | All workspaces with progress overview |
+| **Kanban Board**  | `/projects/:id/board`    | Drag-and-drop status columns          |
+| **List View**     | `/projects/:id/list`     | Filterable & sortable task table      |
+| **Calendar**      | `/projects/:id/calendar` | Monthly deadline visualization        |
+| **Task Detail**   | `/tasks/:id`             | Full task info, comments, activity    |
+| **Team**          | `/team`                  | Members, roles, invitations           |
+| **Notifications** | `/notifications`         | Notification center                   |
+| **Settings**      | `/settings`              | Profile, workspace, preferences       |
 
 ## 🧪 Running Tests
 
@@ -590,8 +579,6 @@ npm run test:watch
 # Coverage report
 npm run test:coverage
 ```
-
----
 
 ## 🤝 Contributing
 
@@ -619,23 +606,15 @@ Contributions are welcome and appreciated! Please follow these steps:
 
 ### Commit Types
 
-| Type | Description |
-|---|---|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `style` | Formatting, no logic change |
+| Type       | Description                             |
+| ---------- | --------------------------------------- |
+| `feat`     | New feature                             |
+| `fix`      | Bug fix                                 |
+| `docs`     | Documentation only                      |
+| `style`    | Formatting, no logic change             |
 | `refactor` | Code restructure without feature change |
-| `test` | Adding or updating tests |
-| `chore` | Build process or config changes |
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
+| `test`     | Adding or updating tests                |
+| `chore`    | Build process or config changes         |
 
 ## 🙏 Acknowledgments
 
