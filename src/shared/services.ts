@@ -1,2 +1,2 @@
-export const BASE_URL = "https://semicoln-be.vercel.app/Auth";
-export const Second_URL = "https://semicoln-be.vercel.app";
+export const BASE_URL = "https://semi-col-backend.vercel.app/Auth";
+export const Second_URL = "https://semi-col-backend.vercel.app";

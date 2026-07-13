@@ -23,6 +23,7 @@ const WorkspaceList = ({ onCreateNew }: WorkspaceListProps) => {
         setLoading(true);
         const data = await HandleGetAllWorkSpaces();
         setWorkspaces(data);
+        console.log(data);
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Failed to load workspaces.";
