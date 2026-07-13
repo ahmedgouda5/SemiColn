@@ -27,11 +27,13 @@ const WorkspaceList = ({ onCreateNew }: WorkspaceListProps) => {
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Failed to load workspaces.";
-        setError(
-          message.includes("401")
-            ? "Session expired. Please log in again."
-            : "Failed to load workspaces. Please try again.",
-        );
+        
+        if (message.includes("401") || message.includes("log in again")) {
+          navigate("/Auth/Login");
+          return;
+        }
+
+        setError("Failed to load workspaces. Please try again.");
         console.error(err);
       } finally {
         setLoading(false);
