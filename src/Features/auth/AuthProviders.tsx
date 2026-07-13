@@ -5,7 +5,7 @@ const AuthProviders = () => {
   const token = useUserStore((state) => state.token);
 
   if (!token) {
-    return <Navigate to="/Auth/Login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return <Outlet />;

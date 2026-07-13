@@ -26,8 +26,8 @@ const Routing = () => {
       }
     >
       <Routes>
-        <Route path="/" element={<AuthProviders />}>
-          <Route index element={<CreateWorkSpace />} />
+        <Route path="/" element={<CreateWorkSpace />} />
+        <Route element={<AuthProviders />}>
           <Route path="Semicoln" element={<AppLayout />}>
             <Route path="app" element={<Semicoln />} />
             <Route path="tasks" element={<Tasks />} />

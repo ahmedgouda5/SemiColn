@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { useUserStore } from "@/store/UserStore";
 import type { ILogin, ISignup } from "./type";
 
-const BASE_URL = "http://localhost:3000/Auth";
+const BASE_URL = "https://semicoln-be.vercel.app/Auth";
 
 export const signup = async (data: ISignup) => {
   const response = await fetch(`${BASE_URL}/register`, {
